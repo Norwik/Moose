@@ -56,7 +56,7 @@ defmodule Orangutan.Context.MessageContext do
   """
   def get_message_by_uuid(uuid) do
     from(
-      u in Message,
+      m in Message,
       where: u.uuid == ^uuid
     )
     |> Repo.one()
@@ -89,7 +89,7 @@ defmodule Orangutan.Context.MessageContext do
   Retrieve Messages
   """
   def get_messages(offset, limit) do
-    from(u in Message,
+    from(m in Message,
       limit: ^limit,
       offset: ^offset
     )
@@ -100,7 +100,7 @@ defmodule Orangutan.Context.MessageContext do
   Count all Messages
   """
   def count_messages() do
-    from(u in Message,
+    from(m in Message,
       select: count(u.id)
     )
     |> Repo.one()
@@ -143,7 +143,7 @@ defmodule Orangutan.Context.MessageContext do
   """
   def get_meta_by_message_id_key(message_id, meta_key) do
     from(
-      u in MessageMeta,
+      m in MessageMeta,
       where: u.message_id == ^message_id,
       where: u.key == ^meta_key
     )
@@ -155,7 +155,7 @@ defmodule Orangutan.Context.MessageContext do
   """
   def get_message_metas(message_id) do
     from(
-      u in MessageMeta,
+      m in MessageMeta,
       where: u.message_id == ^message_id
     )
     |> Repo.all()

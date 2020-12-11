@@ -56,7 +56,7 @@ defmodule Orangutan.Context.EmailContext do
   """
   def get_email_by_uuid(uuid) do
     from(
-      u in Email,
+      e in Email,
       where: u.uuid == ^uuid
     )
     |> Repo.one()
@@ -67,7 +67,7 @@ defmodule Orangutan.Context.EmailContext do
   """
   def get_email_by_email(email) do
     from(
-      u in Email,
+      e in Email,
       where: u.email == ^email
     )
     |> Repo.one()
@@ -100,7 +100,7 @@ defmodule Orangutan.Context.EmailContext do
   Retrieve Emails
   """
   def get_emails(offset, limit) do
-    from(u in Email,
+    from(e in Email,
       limit: ^limit,
       offset: ^offset
     )
@@ -111,7 +111,7 @@ defmodule Orangutan.Context.EmailContext do
   Count all Emails
   """
   def count_emails() do
-    from(u in Email,
+    from(e in Email,
       select: count(u.id)
     )
     |> Repo.one()
@@ -154,7 +154,7 @@ defmodule Orangutan.Context.EmailContext do
   """
   def get_meta_by_email_id_key(email_id, meta_key) do
     from(
-      u in EmailMeta,
+      e in EmailMeta,
       where: u.email_id == ^email_id,
       where: u.key == ^meta_key
     )
@@ -166,7 +166,7 @@ defmodule Orangutan.Context.EmailContext do
   """
   def get_email_metas(email_id) do
     from(
-      u in EmailMeta,
+      e in EmailMeta,
       where: u.email_id == ^email_id
     )
     |> Repo.all()
