@@ -6,4 +6,5 @@ defmodule Orangutan.Service.MessageService do
   @moduledoc """
   Message Service Module
   """
+  alias Orangutan.Context.MessageContext
 end

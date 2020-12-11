@@ -6,4 +6,5 @@ defmodule Orangutan.Service.UserService do
   @moduledoc """
   User Service Module
   """
+  alias Orangutan.Context.UserContext
 end

@@ -97,6 +97,18 @@ defmodule Orangutan.Context.DomainContext do
   end
 
   @doc """
+  Retrieve User Domains
+  """
+  def get_user_domains(user_id, offset, limit) do
+    from(u in Domain,
+      user_id: ^user_id,
+      limit: ^limit,
+      offset: ^offset
+    )
+    |> Repo.all()
+  end
+
+  @doc """
   Count all Domains
   """
   def count_domains() do
