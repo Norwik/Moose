@@ -7,7 +7,7 @@ defmodule Orangutan.Context.MessageContext do
   Message Context Module
   """
 
-  import Ecto.Query
-  alias Orangutan.Repo
-  alias Orangutan.Model.{MessageMeta, Message}
+  # import Ecto.Query
+  # alias Orangutan.Repo
+  # alias Orangutan.Model.{MessageMeta, Message}
 end

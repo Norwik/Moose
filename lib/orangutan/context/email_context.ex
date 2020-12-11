@@ -7,7 +7,7 @@ defmodule Orangutan.Context.EmailContext do
   Email Context Module
   """
 
-  import Ecto.Query
-  alias Orangutan.Repo
-  alias Orangutan.Model.{EmailMeta, Email}
+  # import Ecto.Query
+  # alias Orangutan.Repo
+  # alias Orangutan.Model.{EmailMeta, Email}
 end

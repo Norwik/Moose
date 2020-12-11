@@ -7,7 +7,7 @@ defmodule Orangutan.Context.DomainContext do
   Domain Context Module
   """
 
-  import Ecto.Query
-  alias Orangutan.Repo
-  alias Orangutan.Model.{DomainMeta, Domain}
+  # import Ecto.Query
+  # alias Orangutan.Repo
+  # alias Orangutan.Model.{DomainMeta, Domain}
 end
