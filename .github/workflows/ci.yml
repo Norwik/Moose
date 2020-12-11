@@ -44,5 +44,5 @@ jobs:
       - name: Test orangutan
         run: make ci
 
-      #- name: Build orangutan
-      #  run: make build
+      - name: Build orangutan
+        run: make build

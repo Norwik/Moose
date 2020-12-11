@@ -89,8 +89,8 @@ defmodule Orangutan.Context.DomainContext do
   """
   def get_domains(offset, limit) do
     from(d in Domain,
-      where: limit == ^limit,
-      where: offset == ^offset
+      where: d.limit == ^limit,
+      where: d.offset == ^offset
     )
     |> Repo.all()
   end
@@ -100,9 +100,9 @@ defmodule Orangutan.Context.DomainContext do
   """
   def get_user_domains(user_id, offset, limit) do
     from(d in Domain,
-      where: user_id == ^user_id,
-      where: limit == ^limit,
-      where: offset == ^offset
+      where: d.user_id == ^user_id,
+      where: d.limit == ^limit,
+      where: d.offset == ^offset
     )
     |> Repo.all()
   end

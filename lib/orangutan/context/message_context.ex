@@ -90,8 +90,8 @@ defmodule Orangutan.Context.MessageContext do
   """
   def get_messages(offset, limit) do
     from(m in Message,
-      limit: ^limit,
-      offset: ^offset
+      where: m.limit == ^limit,
+      where: m.offset == ^offset
     )
     |> Repo.all()
   end

@@ -58,8 +58,7 @@ defmodule Orangutan.Context.UserContext do
   Get User by UUID
   """
   def get_user_by_uuid(uuid) do
-    from(
-      u in User,
+    from(u in User,
       where: u.uuid == ^uuid
     )
     |> Repo.one()
@@ -69,8 +68,7 @@ defmodule Orangutan.Context.UserContext do
   Get User by API Key
   """
   def get_user_by_api_key(api_key) do
-    from(
-      u in User,
+    from(u in User,
       where: u.api_key == ^api_key
     )
     |> Repo.one()
@@ -80,8 +78,7 @@ defmodule Orangutan.Context.UserContext do
   Get User by Email
   """
   def get_user_by_email(email) do
-    from(
-      u in User,
+    from(u in User,
       where: u.email == ^email
     )
     |> Repo.one()
@@ -115,8 +112,8 @@ defmodule Orangutan.Context.UserContext do
   """
   def get_users(offset, limit) do
     from(u in User,
-      where: limit == ^limit,
-      where: offset == ^offset
+      where: u.limit == ^limit,
+      where: u.offset == ^offset
     )
     |> Repo.all()
   end
