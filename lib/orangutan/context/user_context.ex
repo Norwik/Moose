@@ -115,8 +115,8 @@ defmodule Orangutan.Context.UserContext do
   """
   def get_users(offset, limit) do
     from(u in User,
-      limit: ^limit,
-      offset: ^offset
+      where: limit == ^limit,
+      where: offset == ^offset
     )
     |> Repo.all()
   end
@@ -167,8 +167,7 @@ defmodule Orangutan.Context.UserContext do
   Get Meta by User ID and Key
   """
   def get_meta_by_user_id_key(user_id, meta_key) do
-    from(
-      u in UserMeta,
+    from(u in UserMeta,
       where: u.user_id == ^user_id,
       where: u.key == ^meta_key
     )
@@ -179,8 +178,7 @@ defmodule Orangutan.Context.UserContext do
   Get User Metas
   """
   def get_user_metas(user_id) do
-    from(
-      u in UserMeta,
+    from(u in UserMeta,
       where: u.user_id == ^user_id
     )
     |> Repo.all()

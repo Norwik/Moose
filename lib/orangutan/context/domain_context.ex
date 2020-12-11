@@ -55,8 +55,7 @@ defmodule Orangutan.Context.DomainContext do
   Get Domain by UUID
   """
   def get_domain_by_uuid(uuid) do
-    from(
-      d in Domain,
+    from(d in Domain,
       where: d.uuid == ^uuid
     )
     |> Repo.one()
@@ -90,8 +89,8 @@ defmodule Orangutan.Context.DomainContext do
   """
   def get_domains(offset, limit) do
     from(d in Domain,
-      limit: ^limit,
-      offset: ^offset
+      where: limit == ^limit,
+      where: offset == ^offset
     )
     |> Repo.all()
   end
@@ -101,9 +100,9 @@ defmodule Orangutan.Context.DomainContext do
   """
   def get_user_domains(user_id, offset, limit) do
     from(d in Domain,
-      user_id: ^user_id,
-      limit: ^limit,
-      offset: ^offset
+      where: user_id == ^user_id,
+      where: limit == ^limit,
+      where: offset == ^offset
     )
     |> Repo.all()
   end

@@ -101,8 +101,8 @@ defmodule Orangutan.Context.EmailContext do
   """
   def get_emails(offset, limit) do
     from(e in Email,
-      limit: ^limit,
-      offset: ^offset
+      where: limit == ^limit,
+      where: offset == ^offset
     )
     |> Repo.all()
   end
