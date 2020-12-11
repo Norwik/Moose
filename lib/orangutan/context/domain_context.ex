@@ -57,7 +57,7 @@ defmodule Orangutan.Context.DomainContext do
   def get_domain_by_uuid(uuid) do
     from(
       d in Domain,
-      where: u.uuid == ^uuid
+      where: d.uuid == ^uuid
     )
     |> Repo.one()
   end
@@ -113,7 +113,7 @@ defmodule Orangutan.Context.DomainContext do
   """
   def count_domains() do
     from(d in Domain,
-      select: count(u.id)
+      select: count(d.id)
     )
     |> Repo.one()
   end
@@ -156,8 +156,8 @@ defmodule Orangutan.Context.DomainContext do
   def get_meta_by_domain_id_key(domain_id, meta_key) do
     from(
       d in DomainMeta,
-      where: u.domain_id == ^domain_id,
-      where: u.key == ^meta_key
+      where: d.domain_id == ^domain_id,
+      where: d.key == ^meta_key
     )
     |> Repo.one()
   end
@@ -168,7 +168,7 @@ defmodule Orangutan.Context.DomainContext do
   def get_domain_metas(domain_id) do
     from(
       d in DomainMeta,
-      where: u.domain_id == ^domain_id
+      where: d.domain_id == ^domain_id
     )
     |> Repo.all()
   end
