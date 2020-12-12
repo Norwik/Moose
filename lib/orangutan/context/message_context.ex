@@ -126,7 +126,8 @@ defmodule Orangutan.Context.MessageContext do
   Update a Message Meta
   """
   def update_meta(message_meta, attrs) do
-    MessageMeta.changeset(message_meta, attrs)
+    message_meta
+    |> MessageMeta.changeset(attrs)
     |> Repo.update()
   end
 

@@ -151,7 +151,8 @@ defmodule Orangutan.Context.UserContext do
   Update a User Ueta
   """
   def update_meta(user_meta, attrs) do
-    UserMeta.changeset(user_meta, attrs)
+    user_meta
+    |> UserMeta.changeset(attrs)
     |> Repo.update()
   end
 

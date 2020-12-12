@@ -137,7 +137,8 @@ defmodule Orangutan.Context.EmailContext do
   Update an Email Meta
   """
   def update_meta(email_meta, attrs) do
-    EmailMeta.changeset(email_meta, attrs)
+    email_meta
+    |> EmailMeta.changeset(attrs)
     |> Repo.update()
   end
 

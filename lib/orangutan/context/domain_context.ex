@@ -126,7 +126,8 @@ defmodule Orangutan.Context.DomainContext do
   Update a Domain Meta
   """
   def update_meta(domain_meta, attrs) do
-    DomainMeta.changeset(domain_meta, attrs)
+    domain_meta
+    |> DomainMeta.changeset(attrs)
     |> Repo.update()
   end
 
