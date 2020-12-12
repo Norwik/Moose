@@ -1,0 +1,3 @@
+[submodule "pinkman"]
+	path = pinkman
+	url = https://github.com/Norwik/Pinkman.git
