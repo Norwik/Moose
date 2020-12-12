@@ -14,7 +14,7 @@ defmodule Orangutan.Model.Message do
     field :uuid, Ecto.UUID
     field :from, :string
     field :subject, :string
-    field :content, :id
+    field :content, :string
     field :email_id, :id
 
     timestamps()

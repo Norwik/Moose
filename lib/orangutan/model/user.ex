@@ -14,6 +14,7 @@ defmodule Orangutan.Model.User do
     field :uuid, Ecto.UUID
     field :name, :string
     field :email, :string
+    field :api_key, Ecto.UUID
     field :password_hash, :string
     field :verified, :boolean, default: false
     field :role, :string
@@ -29,6 +30,7 @@ defmodule Orangutan.Model.User do
       :uuid,
       :name,
       :email,
+      :api_key,
       :password_hash,
       :verified,
       :role,
@@ -38,6 +40,7 @@ defmodule Orangutan.Model.User do
       :uuid,
       :name,
       :email,
+      :api_key,
       :password_hash,
       :verified,
       :role,
