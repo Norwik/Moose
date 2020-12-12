@@ -2,7 +2,7 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule Orangutan.DataCase do
+defmodule Moose.DataCase do
   @moduledoc """
   This module defines the setup for tests requiring
   access to the application's data layer.
@@ -14,7 +14,7 @@ defmodule Orangutan.DataCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use Orangutan.DataCase, async: true`, although
+  by setting `use Moose.DataCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -22,17 +22,17 @@ defmodule Orangutan.DataCase do
 
   using do
     quote do
-      alias Orangutan.Repo
+      alias Moose.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import Orangutan.DataCase
+      import Moose.DataCase
     end
   end
 
   setup tags do
-    Orangutan.DataCase.setup_sandbox(tags)
+    Moose.DataCase.setup_sandbox(tags)
     :ok
   end
 
@@ -40,7 +40,7 @@ defmodule Orangutan.DataCase do
   Sets up the sandbox based on the test tags.
   """
   def setup_sandbox(tags) do
-    pid = Ecto.Adapters.SQL.Sandbox.start_owner!(Orangutan.Repo, shared: not tags[:async])
+    pid = Ecto.Adapters.SQL.Sandbox.start_owner!(Moose.Repo, shared: not tags[:async])
     on_exit(fn -> Ecto.Adapters.SQL.Sandbox.stop_owner(pid) end)
   end
 

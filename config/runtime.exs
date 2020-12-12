@@ -16,19 +16,19 @@ import Config
 # If you use `mix release`, you need to explicitly enable the server
 # by passing the PHX_SERVER=true when you start it:
 #
-#     PHX_SERVER=true bin/orangutan start
+#     PHX_SERVER=true bin/moose start
 #
 # Alternatively, you can use `mix phx.gen.release` to generate a `bin/server`
 # script that automatically sets the env var above.
 if System.get_env("PHX_SERVER") do
-  config :orangutan, OrangutanWeb.Endpoint, server: true
+  config :moose, MooseWeb.Endpoint, server: true
 end
 
 if config_env() == :prod do
   maybe_ipv6 = if System.get_env("ECTO_IPV6"), do: [:inet6], else: []
 
   if System.get_env("DB_SSL") || "off" == "on" do
-    config :orangutan, Orangutan.Repo,
+    config :moose, Moose.Repo,
       username: System.get_env("DB_USERNAME"),
       password: System.get_env("DB_PASSWORD"),
       hostname: System.get_env("DB_HOSTNAME"),
@@ -43,7 +43,7 @@ if config_env() == :prod do
         cacertfile: System.get_env("DB_CA_CERTFILE_PATH") || ""
       ]
   else
-    config :orangutan, Orangutan.Repo,
+    config :moose, Moose.Repo,
       username: System.get_env("DB_USERNAME"),
       password: System.get_env("DB_PASSWORD"),
       hostname: System.get_env("DB_HOSTNAME"),
@@ -69,7 +69,7 @@ if config_env() == :prod do
   host = System.get_env("APP_HOST") || "example.com"
   port = String.to_integer(System.get_env("APP_PORT") || "4000")
 
-  config :orangutan, OrangutanWeb.Endpoint,
+  config :moose, MooseWeb.Endpoint,
     url: [host: host, port: port, scheme: System.get_env("APP_HTTP_SCHEMA") || "http"],
     http: [
       # Enable IPv6 and bind on all interfaces.
@@ -87,7 +87,7 @@ if config_env() == :prod do
   # Also, you may need to configure the Swoosh API client of your choice if you
   # are not using SMTP. Here is an example of the configuration:
   #
-  #     config :orangutan, Orangutan.Mailer,
+  #     config :moose, Moose.Mailer,
   #       adapter: Swoosh.Adapters.Mailgun,
   #       api_key: System.get_env("MAILGUN_API_KEY"),
   #       domain: System.get_env("MAILGUN_DOMAIN")

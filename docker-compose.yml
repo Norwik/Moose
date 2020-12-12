@@ -7,7 +7,7 @@ services:
     environment:
       PGUSER: root
       PGPASSWORD: D1q9f0C2&PEW
-      PGDATABASE: orangutan
+      PGDATABASE: moose
       PGPORT: 5432
       PGHOST: db
     restart: unless-stopped
@@ -18,7 +18,7 @@ services:
  db:
     image: postgres:16.0
     environment:
-      POSTGRES_DB: orangutan
+      POSTGRES_DB: moose
       POSTGRES_USER: root
       POSTGRES_PASSWORD: D1q9f0C2&PEW
     restart: unless-stopped

@@ -6,9 +6,9 @@ import Config
 
 # Configure your database
 if System.get_env("DB_SSL") || "off" == "on" do
-  config :orangutan, Orangutan.Repo,
-    username: System.get_env("DB_USERNAME") || "orangutan",
-    password: System.get_env("DB_PASSWORD") || "orangutan",
+  config :moose, Moose.Repo,
+    username: System.get_env("DB_USERNAME") || "moose",
+    password: System.get_env("DB_PASSWORD") || "moose",
     hostname: System.get_env("DB_HOSTNAME") || "localhost",
     database: System.get_env("DB_DATABASE") || "gorilla_dev",
     port: String.to_integer(System.get_env("DB_PORT") || "5432"),
@@ -22,11 +22,11 @@ if System.get_env("DB_SSL") || "off" == "on" do
       cacertfile: System.get_env("DB_CA_CERTFILE_PATH") || ""
     ]
 else
-  config :orangutan, Orangutan.Repo,
-    username: System.get_env("DB_USERNAME") || "orangutan",
-    password: System.get_env("DB_PASSWORD") || "orangutan",
+  config :moose, Moose.Repo,
+    username: System.get_env("DB_USERNAME") || "moose",
+    password: System.get_env("DB_PASSWORD") || "moose",
     hostname: System.get_env("DB_HOSTNAME") || "localhost",
-    database: System.get_env("DB_DATABASE") || "orangutan_dev",
+    database: System.get_env("DB_DATABASE") || "moose_dev",
     port: String.to_integer(System.get_env("DB_PORT") || "5432"),
     maintenance_database: System.get_env("DB_DATABASE") || "gorilla_dev",
     stacktrace: true,
@@ -41,7 +41,7 @@ end
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we use it
 # with esbuild to bundle .js and .css sources.
-config :orangutan, OrangutanWeb.Endpoint,
+config :moose, MooseWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
   http: [ip: {127, 0, 0, 1}, port: String.to_integer(System.get_env("APP_PORT") || "4000")],
@@ -79,7 +79,7 @@ config :orangutan, OrangutanWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :orangutan, OrangutanWeb.Endpoint,
+config :moose, MooseWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",

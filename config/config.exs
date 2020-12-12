@@ -7,14 +7,14 @@
 # General application configuration
 import Config
 
-config :orangutan,
-  ecto_repos: [Orangutan.Repo]
+config :moose,
+  ecto_repos: [Moose.Repo]
 
 # Configures the endpoint
-config :orangutan, OrangutanWeb.Endpoint,
+config :moose, MooseWeb.Endpoint,
   url: [host: System.get_env("APP_HOST") || "localhost"],
-  render_errors: [view: OrangutanWeb.ErrorView, accepts: ~w(html json), layout: false],
-  pubsub_server: Orangutan.PubSub,
+  render_errors: [view: MooseWeb.ErrorView, accepts: ~w(html json), layout: false],
+  pubsub_server: Moose.PubSub,
   live_view: [signing_salt: "/FQ30bq7"]
 
 # Configures the mailer
@@ -24,7 +24,7 @@ config :orangutan, OrangutanWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :orangutan, Orangutan.Mailer, adapter: Swoosh.Adapters.Local
+config :moose, Moose.Mailer, adapter: Swoosh.Adapters.Local
 
 # Swoosh API client is needed for adapters other than SMTP.
 config :swoosh, :api_client, false

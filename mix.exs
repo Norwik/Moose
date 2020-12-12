@@ -2,7 +2,7 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule Orangutan.MixProject do
+defmodule Moose.MixProject do
   use Mix.Project
 
   @version "0.1.0"
@@ -11,7 +11,7 @@ defmodule Orangutan.MixProject do
 
   def project do
     [
-      app: :orangutan,
+      app: :moose,
       version: @version,
       elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -27,7 +27,7 @@ defmodule Orangutan.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Orangutan.Application, []},
+      mod: {Moose.Application, []},
       extra_applications: [:logger, :runtime_tools, :os_mon]
     ]
   end
@@ -83,6 +83,6 @@ defmodule Mix.Tasks.Version do
   use Mix.Task
 
   def run(_) do
-    Mix.shell().info("Currnt Version: v#{Orangutan.MixProject.get_version()}")
+    Mix.shell().info("Currnt Version: v#{Moose.MixProject.get_version()}")
   end
 end

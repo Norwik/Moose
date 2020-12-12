@@ -24,9 +24,9 @@ jobs:
         image: postgres:latest
         ports: ['5432:5432']
         env:
-          POSTGRES_DB: orangutan_dev
-          POSTGRES_USER: orangutan
-          POSTGRES_PASSWORD: orangutan
+          POSTGRES_DB: moose_dev
+          POSTGRES_USER: moose
+          POSTGRES_PASSWORD: moose
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
       - uses: actions/checkout@v4
@@ -38,11 +38,11 @@ jobs:
       - name: Get dependencies
         run: make deps
 
-      - name: Check orangutan format
+      - name: Check moose format
         run: make fmt_check
 
-      - name: Test orangutan
+      - name: Test moose
         run: make ci
 
-      - name: Build orangutan
+      - name: Build moose
         run: make build

@@ -20,7 +20,7 @@ erl_crash.dump
 *.ez
 
 # Ignore package tarball (built via "mix hex.build").
-orangutan-*.tar
+moose-*.tar
 
 # Ignore assets that are produced by build tools.
 /priv/static/assets/
@@ -33,9 +33,9 @@ npm-debug.log
 
 /assets/node_modules/
 
-orangutan_test*
+moose_test*
 
-orangutan_dev*
+moose_dev*
 
 .vscode
 

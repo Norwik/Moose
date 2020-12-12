@@ -2,7 +2,7 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule OrangutanWeb.ConnCase do
+defmodule MooseWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -15,7 +15,7 @@ defmodule OrangutanWeb.ConnCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use OrangutanWeb.ConnCase, async: true`, although
+  by setting `use MooseWeb.ConnCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -26,17 +26,17 @@ defmodule OrangutanWeb.ConnCase do
       # Import conveniences for testing with connections
       import Plug.Conn
       import Phoenix.ConnTest
-      import OrangutanWeb.ConnCase
+      import MooseWeb.ConnCase
 
-      alias OrangutanWeb.Router.Helpers, as: Routes
+      alias MooseWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing
-      @endpoint OrangutanWeb.Endpoint
+      @endpoint MooseWeb.Endpoint
     end
   end
 
   setup tags do
-    Orangutan.DataCase.setup_sandbox(tags)
+    Moose.DataCase.setup_sandbox(tags)
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
 end
