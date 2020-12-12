@@ -160,7 +160,6 @@ defmodule Orangutan.Context.MessageContext do
     |> Repo.all()
   end
 
-
   @doc """
   Validate Message ID
   """
