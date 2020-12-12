@@ -39,8 +39,8 @@ defmodule Orangutan.Context.EmailContext do
   Create a new Email
   """
   def create_email(attrs \\ %{}) do
-    %User{}
-    |> User.changeset(attrs)
+    %Email{}
+    |> Email.changeset(attrs)
     |> Repo.insert()
   end
 
@@ -48,7 +48,7 @@ defmodule Orangutan.Context.EmailContext do
   Retrieve a Email by ID
   """
   def get_email_by_id(id) do
-    Repo.get(User, id)
+    Repo.get(Email, id)
   end
 
   @doc """
@@ -56,7 +56,7 @@ defmodule Orangutan.Context.EmailContext do
   """
   def get_email_by_uuid(uuid) do
     from(
-      u in User,
+      u in Email,
       where: u.uuid == ^uuid
     )
     |> Repo.one()
@@ -67,7 +67,7 @@ defmodule Orangutan.Context.EmailContext do
   """
   def get_email_by_email(email) do
     from(
-      u in User,
+      u in Email,
       where: u.email == ^email
     )
     |> Repo.one()
@@ -78,7 +78,7 @@ defmodule Orangutan.Context.EmailContext do
   """
   def update_email(email, attrs) do
     email
-    |> User.changeset(attrs)
+    |> Email.changeset(attrs)
     |> Repo.update()
   end
 
@@ -93,14 +93,14 @@ defmodule Orangutan.Context.EmailContext do
   Retrieve all Emails
   """
   def get_emails() do
-    Repo.all(User)
+    Repo.all(Email)
   end
 
   @doc """
   Retrieve Emails
   """
   def get_emails(offset, limit) do
-    from(u in User,
+    from(u in Email,
       limit: ^limit,
       offset: ^offset
     )
@@ -111,7 +111,7 @@ defmodule Orangutan.Context.EmailContext do
   Count all Emails
   """
   def count_emails() do
-    from(u in User,
+    from(u in Email,
       select: count(u.id)
     )
     |> Repo.one()
