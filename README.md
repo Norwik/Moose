@@ -3,13 +3,13 @@
     <h3 align="center">Moose</h3>
     <p align="center">A Disposable, Secure, Anonymous Email Server, Set up in Minutes.</p>
     <p align="center">
-        <a href="https://github.com/Clivern/Moose/actions/workflows/ci.yml">
-            <img src="https://github.com/Clivern/Moose/actions/workflows/ci.yml/badge.svg"/>
+        <a href="https://github.com/Norwik/Moose/actions/workflows/ci.yml">
+            <img src="https://github.com/Norwik/Moose/actions/workflows/ci.yml/badge.svg"/>
         </a>
-        <a href="https://github.com/Clivern/Moose/releases">
+        <a href="https://github.com/Norwik/Moose/releases">
             <img src="https://img.shields.io/badge/Version-0.1.0-1abc9c.svg">
         </a>
-        <a href="https://github.com/Clivern/Moose/blob/master/LICENSE">
+        <a href="https://github.com/Norwik/Moose/blob/master/LICENSE">
             <img src="https://img.shields.io/badge/LICENSE-MIT-orange.svg">
         </a>
     </p>
@@ -69,12 +69,12 @@ $ docker run -itd \
 
 For transparency into our release cycle and in striving to maintain backward compatibility, `Moose` is maintained under the [Semantic Versioning guidelines](https://semver.org/) and release process is predictable and business-friendly.
 
-See the [Releases section of our GitHub project](https://github.com/clivern/moose/releases) for changelogs for each release version of `Moose`. It contains summaries of the most noteworthy changes made in each release. Also see the [Milestones section](https://github.com/clivern/moose/milestones) for the future roadmap.
+See the [Releases section of our GitHub project](https://github.com/norwik/moose/releases) for changelogs for each release version of `Moose`. It contains summaries of the most noteworthy changes made in each release. Also see the [Milestones section](https://github.com/norwik/moose/milestones) for the future roadmap.
 
 
 ### Bug tracker
 
-If you have any suggestions, bug reports, or annoyances please report them to our issue tracker at https://github.com/clivern/moose/issues
+If you have any suggestions, bug reports, or annoyances please report them to our issue tracker at https://github.com/norwik/moose/issues
 
 
 ### Security Issues
