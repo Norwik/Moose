@@ -42,12 +42,45 @@ defmodule Orangutan.Service.ValidatorService do
   Check if value is empty or not
   """
   def is_empty(value) do
-    case is_integer(value) do
-      true ->
+    case {is_integer(value), String.valid?(value), value == nil} do
+      {_, _, true} ->
+        true
+
+      {true, _, _} ->
         String.trim(to_string(value)) == ""
 
-      false ->
+      {false, true, _} ->
         String.trim(value) == ""
+
+      {_, _, _} ->
+        true
     end
+  end
+
+  @doc """
+  Get int value or default
+  """
+  def get_int(value, default) do
+    case validate_int(value) do
+      true -> parse_int(value)
+      false -> default
+    end
+  end
+
+  @doc """
+  Get string value or default
+  """
+  def get_str(value, default) do
+    case is_empty(value) do
+      true -> default
+      false -> value
+    end
+  end
+
+  @doc """
+  Validate a Gender
+  """
+  def is_gender(gender) do
+    gender in ["male", "female"]
   end
 end

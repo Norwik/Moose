@@ -9,6 +9,7 @@ defmodule Orangutan.Model.Room do
 
   use Ecto.Schema
   import Ecto.Changeset
+  # alias Orangutan.Service.LocationService, as: LocationService
 
   schema "rooms" do
     field :country, :string
@@ -47,5 +48,8 @@ defmodule Orangutan.Model.Room do
       :country,
       :state
     ])
+    |> validate_length(:name, min: 3, max: 60)
+
+    # |> validate_subset(:country, LocationService.get_countries_ids())
   end
 end

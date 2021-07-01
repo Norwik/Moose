@@ -9,6 +9,7 @@ defmodule OrangutanWeb.UserController do
 
   use OrangutanWeb, :controller
   alias Orangutan.Context.UserContext
+  alias Orangutan.Service.ValidatorService
 
   @default_list_limit "10"
   @default_list_offset "0"
@@ -17,18 +18,23 @@ defmodule OrangutanWeb.UserController do
   View User Endpoint
   """
   def index(conn, %{"id" => id}) do
-    case Integer.parse(id) do
+    case ValidatorService.validate_int(id) do
       {_, ""} ->
-        user = UserContext.get_user_by_id(id)
+        user =
+          id
+          |> ValidatorService.parse_int()
+          |> UserContext.get_user_by_id()
 
-        if user do
-          conn
-          |> put_status(:ok)
-          |> render("index.json", %{user: user})
-        else
-          conn
-          |> put_status(:not_found)
-          |> render("error.json", %{error: "User with ID #{id} not found"})
+        case user do
+          nil ->
+            conn
+            |> put_status(:not_found)
+            |> render("error.json", %{error: "User with ID #{id} not found"})
+
+          _ ->
+            conn
+            |> put_status(:ok)
+            |> render("index.json", %{user: user})
         end
 
       :error ->
@@ -42,15 +48,13 @@ defmodule OrangutanWeb.UserController do
   List Users Endpoint
   """
   def list(conn, params) do
-    limit = String.to_integer(params["limit"] || @default_list_limit)
-    offset = String.to_integer(params["offset"] || @default_list_offset)
-    country = params["country"] || ""
-    gender = params["gender"] || ""
-
-    users = UserContext.get_users(country, gender, offset, limit)
+    limit = ValidatorService.get_int(params["limit"], @default_list_limit)
+    offset = ValidatorService.get_int(params["offset"], @default_list_offset)
+    country = ValidatorService.get_str(params["country"], "")
+    gender = ValidatorService.get_str(params["gender"], "")
 
     render(conn, "list.json", %{
-      users: users,
+      users: UserContext.get_users(country, gender, offset, limit),
       metadata: %{
         limit: limit,
         offset: offset,
@@ -65,14 +69,14 @@ defmodule OrangutanWeb.UserController do
   def create(conn, params) do
     user =
       UserContext.new_user(%{
-        age: params["age"] || 18,
-        country: params["country"] || "",
-        email: params["email"] || "",
-        gender: params["gender"] || "",
-        name: params["name"] || "",
-        password: params["password"] || "",
-        state: params["state"] || "",
-        username: params["username"] || "",
+        age: ValidatorService.get_int(params["age"], 18),
+        country: ValidatorService.get_str(params["country"], ""),
+        email: ValidatorService.get_str(params["email"], ""),
+        gender: ValidatorService.get_str(params["gender"], ""),
+        name: ValidatorService.get_str(params["name"], ""),
+        password: ValidatorService.get_str(params["password"], ""),
+        state: ValidatorService.get_str(params["state"], ""),
+        username: ValidatorService.get_str(params["username"], ""),
         verified: false
       })
 
@@ -99,46 +103,51 @@ defmodule OrangutanWeb.UserController do
   def update(conn, params) do
     id = params["id"]
 
-    case Integer.parse(id) do
-      {_int, ""} ->
-        user = UserContext.get_user_by_id(id)
+    case ValidatorService.validate_int(id) do
+      true ->
+        user =
+          id
+          |> ValidatorService.parse_int()
+          |> UserContext.get_user_by_id()
 
-        if user do
-          new_user =
-            UserContext.new_user(%{
-              age: params["age"] || user.age,
-              country: params["country"] || user.country,
-              email: params["email"] || user.email,
-              gender: params["gender"] || user.gender,
-              name: params["name"] || user.name,
-              password: params["password"] || user.password,
-              state: params["state"] || user.state,
-              username: params["username"] || user.username,
-              verified: user.verified
-            })
+        case user do
+          nil ->
+            conn
+            |> put_status(:not_found)
+            |> render("error.json", %{error: "User with ID #{id} not found"})
 
-          case UserContext.update_user(user, new_user) do
-            {:ok, user} ->
-              conn
-              |> put_status(:ok)
-              |> render("index.json", %{user: user})
+          _ ->
+            new_user =
+              UserContext.new_user(%{
+                age: ValidatorService.get_int(params["age"], user.age),
+                country: ValidatorService.get_str(params["country"], user.country),
+                email: ValidatorService.get_str(params["email"], user.email),
+                gender: ValidatorService.get_str(params["gender"], user.gender),
+                name: ValidatorService.get_str(params["name"], user.name),
+                password: ValidatorService.get_str(params["password"], user.password),
+                state: ValidatorService.get_str(params["state"], user.state),
+                username: ValidatorService.get_str(params["username"], user.username),
+                verified: user.verified
+              })
 
-            {:error, changeset} ->
-              messages =
-                changeset.errors()
-                |> Enum.map(fn {field, {message, _options}} -> "#{field}: #{message}" end)
+            case UserContext.update_user(user, new_user) do
+              {:ok, user} ->
+                conn
+                |> put_status(:ok)
+                |> render("index.json", %{user: user})
 
-              conn
-              |> put_status(:bad_request)
-              |> render("error.json", %{error: Enum.at(messages, 0)})
-          end
-        else
-          conn
-          |> put_status(:not_found)
-          |> render("error.json", %{error: "User with ID #{id} not found"})
+              {:error, changeset} ->
+                messages =
+                  changeset.errors()
+                  |> Enum.map(fn {field, {message, _options}} -> "#{field}: #{message}" end)
+
+                conn
+                |> put_status(:bad_request)
+                |> render("error.json", %{error: Enum.at(messages, 0)})
+            end
         end
 
-      _ ->
+      false ->
         conn
         |> put_status(:bad_request)
         |> render("error.json", %{error: "Invalid User ID"})
@@ -149,22 +158,27 @@ defmodule OrangutanWeb.UserController do
   Delete User Endpoint
   """
   def delete(conn, %{"id" => id}) do
-    case Integer.parse(id) do
-      {_int, ""} ->
-        user = UserContext.get_user_by_id(id)
+    case ValidatorService.validate_int(id) do
+      true ->
+        user =
+          id
+          |> ValidatorService.parse_int()
+          |> UserContext.get_user_by_id()
 
-        if user do
-          UserContext.delete_user(user)
+        case user do
+          nil ->
+            conn
+            |> put_status(:not_found)
+            |> render("error.json", %{error: "User with ID #{id} not found"})
 
-          conn
-          |> send_resp(:no_content, "")
-        else
-          conn
-          |> put_status(:not_found)
-          |> render("error.json", %{error: "User with ID #{id} not found"})
+          _ ->
+            UserContext.delete_user(user)
+
+            conn
+            |> send_resp(:no_content, "")
         end
 
-      _ ->
+      false ->
         conn
         |> put_status(:bad_request)
         |> render("error.json", %{error: "Invalid User ID"})

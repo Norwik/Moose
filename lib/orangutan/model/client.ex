@@ -9,6 +9,7 @@ defmodule Orangutan.Model.Client do
 
   use Ecto.Schema
   import Ecto.Changeset
+  # alias Orangutan.Service.LocationService, as: LocationService
 
   schema "clients" do
     field :age, :integer
@@ -48,5 +49,10 @@ defmodule Orangutan.Model.Client do
       :age,
       :last_seen
     ])
+    |> validate_inclusion(:age, 18..100)
+    |> validate_length(:username, min: 3, max: 60)
+
+    # |> validate_subset(:gender, ["male", "female"])
+    # |> validate_subset(:country, LocationService.get_countries_ids())
   end
 end
