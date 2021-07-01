@@ -11,7 +11,9 @@ defmodule Orangutan.Context.ClientContext do
   alias Orangutan.Repo
   alias Orangutan.Model.{ClientMeta, Client}
 
-  # Get a client map
+  @doc """
+  Get a client map
+  """
   def new_client(client \\ %{}) do
     %{
       age: client.age,
@@ -26,7 +28,9 @@ defmodule Orangutan.Context.ClientContext do
     }
   end
 
-  # Get a client meta map
+  @doc """
+  Get a client meta map
+  """
   def new_meta(meta \\ %{}) do
     %{
       key: meta.key,
@@ -35,14 +39,18 @@ defmodule Orangutan.Context.ClientContext do
     }
   end
 
-  # Create a new client
+  @doc """
+  Create a new client
+  """
   def create_client(attrs \\ %{}) do
     %Client{}
     |> Client.changeset(attrs)
     |> Repo.insert()
   end
 
-  # Count all clients
+  @doc """
+  Count all clients
+  """
   def count_clients(country, gender) do
     case {country, gender} do
       {country, gender} when country != "" and gender != "" ->
@@ -75,12 +83,16 @@ defmodule Orangutan.Context.ClientContext do
     end
   end
 
-  # Retrieve a client by ID
+  @doc """
+  Retrieve a client by ID
+  """
   def get_client_by_id(id) do
     Repo.get(Client, id)
   end
 
-  # Get client by uuid
+  @doc """
+  Get client by UUID
+  """
   def get_client_by_uuid(uuid) do
     from(
       u in Client,
@@ -89,7 +101,9 @@ defmodule Orangutan.Context.ClientContext do
     |> Repo.one()
   end
 
-  # Get client by username
+  @doc """
+  Get client by username
+  """
   def get_client_by_username(username) do
     from(
       u in Client,
@@ -98,24 +112,32 @@ defmodule Orangutan.Context.ClientContext do
     |> Repo.one()
   end
 
-  # Update a client
+  @doc """
+  Update a client
+  """
   def update_client(client, attrs) do
     client
     |> Client.changeset(attrs)
     |> Repo.update()
   end
 
-  # Delete a client
+  @doc """
+  Delete a client
+  """
   def delete_client(client) do
     Repo.delete(client)
   end
 
-  # Retrieve all clients
+  @doc """
+  Retrieve all clients
+  """
   def get_clients() do
     Repo.all(Client)
   end
 
-  # Retrieve clients
+  @doc """
+  Retrieve clients
+  """
   def get_clients(country, gender, offset, limit) do
     case {country, gender, offset, limit} do
       {country, gender, offset, limit} when country != "" and gender != "" ->
@@ -152,30 +174,40 @@ defmodule Orangutan.Context.ClientContext do
     end
   end
 
-  # Create a new client meta attribute
+  @doc """
+  Create a new client meta attribute
+  """
   def create_client_meta(attrs \\ %{}) do
     %ClientMeta{}
     |> ClientMeta.changeset(attrs)
     |> Repo.insert()
   end
 
-  # Retrieve a client meta attribute by ID
+  @doc """
+  Retrieve a client meta attribute by ID
+  """
   def get_client_meta_by_id(id) do
     Repo.get(ClientMeta, id)
   end
 
-  # Update a client meta attribute
+  @doc """
+  Update a client meta attribute
+  """
   def update_client_meta(client_meta, attrs) do
     changeset = ClientMeta.changeset(client_meta, attrs)
     Repo.update(changeset)
   end
 
-  # Delete a client meta attribute
+  @doc """
+  Delete a client meta attribute
+  """
   def delete_client_meta(client_meta) do
     Repo.delete(client_meta)
   end
 
-  # Get client meta by client and key
+  @doc """
+  Get client meta by client and key
+  """
   def get_client_meta_by_key(client_id, meta_key) do
     from(
       u in ClientMeta,
@@ -185,7 +217,9 @@ defmodule Orangutan.Context.ClientContext do
     |> Repo.one()
   end
 
-  # Get client metas
+  @doc """
+  Get client metas
+  """
   def get_client_metas(client_id) do
     from(
       u in ClientMeta,

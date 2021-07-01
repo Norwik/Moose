@@ -3,13 +3,19 @@
 # license that can be found in the LICENSE file.
 
 defmodule OrangutanWeb.ClientController do
+  @moduledoc """
+  Client Controller
+  """
+
   use OrangutanWeb, :controller
   alias Orangutan.Context.ClientContext
 
   @default_list_limit "10"
   @default_list_offset "0"
 
-  # Get Client Endpoint
+  @doc """
+  View Client Endpoint
+  """
   def index(conn, %{"id" => id}) do
     case Integer.parse(id) do
       {_int, ""} ->
@@ -32,7 +38,9 @@ defmodule OrangutanWeb.ClientController do
     end
   end
 
-  # List Clients Endpoint
+  @doc """
+  List Clients Endpoint
+  """
   def list(conn, params) do
     limit = String.to_integer(params["limit"] || @default_list_limit)
     offset = String.to_integer(params["offset"] || @default_list_offset)
@@ -51,7 +59,9 @@ defmodule OrangutanWeb.ClientController do
     })
   end
 
-  # Create a New Client
+  @doc """
+  Create Client Endpoint
+  """
   def create(conn, params) do
     client =
       ClientContext.new_client(%{
@@ -62,8 +72,6 @@ defmodule OrangutanWeb.ClientController do
         username: params["username"] || "",
         user_id: params["userId"] || nil
       })
-
-    IO.inspect(client)
 
     case ClientContext.create_client(client) do
       {:ok, client} ->
@@ -82,7 +90,9 @@ defmodule OrangutanWeb.ClientController do
     end
   end
 
-  # Update a Client
+  @doc """
+  Update Client Endpoint
+  """
   def update(conn, params) do
     id = params["id"]
 
@@ -129,7 +139,9 @@ defmodule OrangutanWeb.ClientController do
     end
   end
 
-  # Delete a Client Endpoint
+  @doc """
+  Delete Client Endpoint
+  """
   def delete(conn, %{"id" => id}) do
     case Integer.parse(id) do
       {_int, ""} ->

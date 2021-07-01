@@ -3,13 +3,19 @@
 # license that can be found in the LICENSE file.
 
 defmodule OrangutanWeb.UserController do
+  @moduledoc """
+  User Controller
+  """
+
   use OrangutanWeb, :controller
   alias Orangutan.Context.UserContext
 
   @default_list_limit "10"
   @default_list_offset "0"
 
-  # Get user endpoint
+  @doc """
+  View User Endpoint
+  """
   def index(conn, %{"id" => id}) do
     case Integer.parse(id) do
       {_, ""} ->
@@ -32,7 +38,9 @@ defmodule OrangutanWeb.UserController do
     end
   end
 
-  # List users endpoint
+  @doc """
+  List Users Endpoint
+  """
   def list(conn, params) do
     limit = String.to_integer(params["limit"] || @default_list_limit)
     offset = String.to_integer(params["offset"] || @default_list_offset)
@@ -51,7 +59,9 @@ defmodule OrangutanWeb.UserController do
     })
   end
 
-  # Create a new User
+  @doc """
+  Create User Endpoint
+  """
   def create(conn, params) do
     user =
       UserContext.new_user(%{
@@ -83,7 +93,9 @@ defmodule OrangutanWeb.UserController do
     end
   end
 
-  # Update a user
+  @doc """
+  Update User Endpoint
+  """
   def update(conn, params) do
     id = params["id"]
 
@@ -133,7 +145,9 @@ defmodule OrangutanWeb.UserController do
     end
   end
 
-  # Delete a User Endpoint
+  @doc """
+  Delete User Endpoint
+  """
   def delete(conn, %{"id" => id}) do
     case Integer.parse(id) do
       {_int, ""} ->

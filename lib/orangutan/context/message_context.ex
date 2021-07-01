@@ -12,6 +12,9 @@ defmodule Orangutan.Context.MessageContext do
   alias Orangutan.Model.{MessageMeta, Message}
 
   # Get a message map
+  @doc """
+  Get a channel map
+  """
   def new_message(message \\ %{}) do
     %{
       content: message.content,
@@ -24,6 +27,9 @@ defmodule Orangutan.Context.MessageContext do
   end
 
   # Get a message meta map
+  @doc """
+  Get a channel map
+  """
   def new_meta(meta \\ %{}) do
     %{
       key: meta.key,
@@ -33,6 +39,9 @@ defmodule Orangutan.Context.MessageContext do
   end
 
   # Create a new message
+  @doc """
+  Get a channel map
+  """
   def create_message(attrs \\ %{}) do
     %Message{}
     |> Message.changeset(attrs)
@@ -40,6 +49,9 @@ defmodule Orangutan.Context.MessageContext do
   end
 
   # Count all messages
+  @doc """
+  Get a channel map
+  """
   def count_messages(channel_id, room_id) do
     case {channel_id, room_id} do
       {channel_id, room_id} when channel_id != "" and room_id != "" ->
@@ -73,11 +85,17 @@ defmodule Orangutan.Context.MessageContext do
   end
 
   # Retrieve a message by ID
+  @doc """
+  Get a channel map
+  """
   def get_message_by_id(id) do
     Repo.get(Message, id)
   end
 
   # Get message by uuid
+  @doc """
+  Get a channel map
+  """
   def get_message_by_uuid(uuid) do
     from(
       u in Message,
@@ -87,6 +105,9 @@ defmodule Orangutan.Context.MessageContext do
   end
 
   # Update a message
+  @doc """
+  Get a channel map
+  """
   def update_message(message, attrs) do
     message
     |> Message.changeset(attrs)
@@ -94,16 +115,25 @@ defmodule Orangutan.Context.MessageContext do
   end
 
   # Delete a message
+  @doc """
+  Get a channel map
+  """
   def delete_message(message) do
     Repo.delete(message)
   end
 
   # Retrieve all messages
+  @doc """
+  Get a channel map
+  """
   def get_messages() do
     Repo.all(Message)
   end
 
   # Retrieve messages
+  @doc """
+  Get a channel map
+  """
   def get_messages(channel_id, room_id, offset, limit) do
     case {channel_id, room_id, offset, limit} do
       {channel_id, room_id, offset, limit} when channel_id != "" and room_id != "" ->
@@ -141,6 +171,9 @@ defmodule Orangutan.Context.MessageContext do
   end
 
   # Create a new message meta attribute
+  @doc """
+  Get a channel map
+  """
   def create_message_meta(attrs \\ %{}) do
     %MessageMeta{}
     |> MessageMeta.changeset(attrs)
@@ -148,22 +181,34 @@ defmodule Orangutan.Context.MessageContext do
   end
 
   # Retrieve a message meta attribute by ID
+  @doc """
+  Get a channel map
+  """
   def get_message_meta_by_id(id) do
     Repo.get(MessageMeta, id)
   end
 
   # Update a message meta attribute
+  @doc """
+  Get a channel map
+  """
   def update_message_meta(message_meta, attrs) do
     changeset = MessageMeta.changeset(message_meta, attrs)
     Repo.update(changeset)
   end
 
   # Delete a message meta attribute
+  @doc """
+  Get a channel map
+  """
   def delete_message_meta(message_meta) do
     Repo.delete(message_meta)
   end
 
   # Get message meta by message and key
+  @doc """
+  Get a channel map
+  """
   def get_message_meta_by_key(message_id, meta_key) do
     from(
       u in MessageMeta,
@@ -174,6 +219,9 @@ defmodule Orangutan.Context.MessageContext do
   end
 
   # Get message metas
+  @doc """
+  Get a channel map
+  """
   def get_message_metas(message_id) do
     from(
       u in MessageMeta,

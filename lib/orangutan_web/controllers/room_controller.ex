@@ -3,5 +3,9 @@
 # license that can be found in the LICENSE file.
 
 defmodule OrangutanWeb.RoomController do
+  @moduledoc """
+  Room Controller
+  """
+
   use OrangutanWeb, :controller
 end

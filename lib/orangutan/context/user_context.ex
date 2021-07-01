@@ -12,7 +12,9 @@ defmodule Orangutan.Context.UserContext do
   alias Orangutan.Repo
   alias Orangutan.Model.{UserMeta, User}
 
-  # Get a user map
+  @doc """
+  Get a user map
+  """
   def new_user(user \\ %{}) do
     %{
       age: user.age,
@@ -28,7 +30,9 @@ defmodule Orangutan.Context.UserContext do
     }
   end
 
-  # Get a user meta map
+  @doc """
+  Get a user meta map
+  """
   def new_meta(meta \\ %{}) do
     %{
       key: meta.key,
@@ -37,14 +41,18 @@ defmodule Orangutan.Context.UserContext do
     }
   end
 
-  # Create a new user
+  @doc """
+  Create a new user
+  """
   def create_user(attrs \\ %{}) do
     %User{}
     |> User.changeset(attrs)
     |> Repo.insert()
   end
 
-  # Count all users
+  @doc """
+  Count all users
+  """
   def count_users(country, gender) do
     case {country, gender} do
       {country, gender} when country != "" and gender != "" ->
@@ -77,12 +85,16 @@ defmodule Orangutan.Context.UserContext do
     end
   end
 
-  # Retrieve a user by ID
+  @doc """
+  Retrieve a user by ID
+  """
   def get_user_by_id(id) do
     Repo.get(User, id)
   end
 
-  # Get user by username
+  @doc """
+  Get user by username
+  """
   def get_user_by_username(username) do
     from(
       u in User,
@@ -91,7 +103,9 @@ defmodule Orangutan.Context.UserContext do
     |> Repo.one()
   end
 
-  # Get user by email
+  @doc """
+  Get user by email
+  """
   def get_user_by_email(email) do
     from(
       u in User,
@@ -100,24 +114,32 @@ defmodule Orangutan.Context.UserContext do
     |> Repo.one()
   end
 
-  # Update a user
+  @doc """
+  Update a user
+  """
   def update_user(user, attrs) do
     user
     |> User.changeset(attrs)
     |> Repo.update()
   end
 
-  # Delete a user
+  @doc """
+  Delete a user
+  """
   def delete_user(user) do
     Repo.delete(user)
   end
 
-  # Retrieve all users
+  @doc """
+  Retrieve all users
+  """
   def get_users() do
     Repo.all(User)
   end
 
-  # Retrieve users
+  @doc """
+  Retrieve users
+  """
   def get_users(country, gender, offset, limit) do
     case {country, gender, offset, limit} do
       {country, gender, offset, limit} when country != "" and gender != "" ->
@@ -154,35 +176,47 @@ defmodule Orangutan.Context.UserContext do
     end
   end
 
-  # Create a new user meta attribute
+  @doc """
+  Create a new user meta attribute
+  """
   def create_user_meta(attrs \\ %{}) do
     %UserMeta{}
     |> UserMeta.changeset(attrs)
     |> Repo.insert()
   end
 
-  # Retrieve a user meta attribute by ID
+  @doc """
+  Retrieve a user meta attribute by ID
+  """
   def get_user_meta_by_id(id) do
     Repo.get(UserMeta, id)
   end
 
-  # Update a user meta attribute
+  @doc """
+  Update a user meta attribute
+  """
   def update_user_meta(user_meta, attrs) do
     changeset = UserMeta.changeset(user_meta, attrs)
     Repo.update(changeset)
   end
 
-  # Delete a user meta attribute
+  @doc """
+  Delete a user meta attribute
+  """
   def delete_user_meta(user_meta) do
     Repo.delete(user_meta)
   end
 
-  # Validate a user password
+  @doc """
+  Validate a user password
+  """
   def validate_password(plain_password, hash) do
     Argon2.verify_pass(plain_password, hash)
   end
 
-  # Get user meta by user and key
+  @doc """
+  Get user meta by user and key
+  """
   def get_user_meta_by_key(user_id, meta_key) do
     from(
       u in UserMeta,
@@ -192,7 +226,9 @@ defmodule Orangutan.Context.UserContext do
     |> Repo.one()
   end
 
-  # Get user metas
+  @doc """
+  Get user metas
+  """
   def get_user_metas(user_id) do
     from(
       u in UserMeta,

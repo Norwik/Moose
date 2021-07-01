@@ -3,11 +3,20 @@
 # license that can be found in the LICENSE file.
 
 defmodule OrangutanWeb.ReadyController do
+  @moduledoc """
+  Ready Controller
+  """
+
   use OrangutanWeb, :controller
 
+  @doc """
+  Ready Endpoint
+  """
   def ready(conn, _params) do
+    body = Jason.encode!(%{status: "ok"})
+
     conn
     |> put_resp_content_type("application/json")
-    |> send_resp(200, "{\"status\": \"ok\"}")
+    |> send_resp(200, body)
   end
 end

@@ -3,5 +3,9 @@
 # license that can be found in the LICENSE file.
 
 defmodule OrangutanWeb.MessageController do
+  @moduledoc """
+  Message Controller
+  """
+
   use OrangutanWeb, :controller
 end
