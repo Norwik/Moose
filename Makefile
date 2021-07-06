@@ -59,10 +59,10 @@ migrate:
 	$(mix) ecto.setup
 
 
-## run: Run rakon
+## run: Run cain
 .PHONY: run
 run:
-	@echo ">> ============= Run rakon ============= <<"
+	@echo ">> ============= Run cain ============= <<"
 	$(mix) phx.server
 
 
