@@ -88,6 +88,6 @@ We are an open source, community-driven project so please feel free to join us. 
 
 ### License
 
-© 2022, `Chat`. Released under [Apache License, Version 2.0](https://www.apache.org/licenses/LICENSE-2.0).
+© 2022, Clivern. Released under [MIT License](https://opensource.org/licenses/mit-license.php).
 
-**Chat** is authored and maintained by [@Clivern](https://github.com/clivern).
+**Chat** is authored and maintained by [@clivern](http://github.com/clivern).

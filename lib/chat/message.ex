@@ -9,6 +9,7 @@ defmodule Chat.Message do
   schema "message" do
     field :content, :string
     field :status, :string
+    field :type, :string
 
     timestamps()
   end

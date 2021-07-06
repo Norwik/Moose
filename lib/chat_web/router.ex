@@ -18,13 +18,24 @@ defmodule ChatWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :pub do
+    plug :accepts, ["json"]
+  end
+
   scope "/", ChatWeb do
     pipe_through :browser
 
     get "/", PageController, :index
   end
 
-  scope "/api", ChatWeb do
+  scope "/", ChatWeb do
+    pipe_through :pub
+
+    get "/_health", HealthController, :health
+    get "/_ready", ReadyController, :ready
+  end
+
+  scope "/api/v1", ChatWeb do
     pipe_through :api
 
     get "/channel", ChannelController, :list
