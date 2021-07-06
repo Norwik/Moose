@@ -1,7 +1,7 @@
 <p align="center">
     <img alt="Chat Logo" src="/assets/img/logo.png" width="180" />
     <h3 align="center">Chat</h3>
-    <p align="center">An Online Free Chat Rooms System with an Unexpected Focus on Privacy, Set up in Minutes.</p>
+    <p align="center">An Online Free Chat Rooms System, Set up in Minutes.</p>
     <p align="center">
         <a href="https://github.com/Clivern/Chat/actions/workflows/ci.yml">
             <img src="https://github.com/Clivern/Chat/actions/workflows/ci.yml/badge.svg"/>
