@@ -2,7 +2,7 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule Cain.Application do
+defmodule Chat.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
@@ -13,20 +13,20 @@ defmodule Cain.Application do
   def start(_type, _args) do
     children = [
       # Start the Ecto repository
-      Cain.Repo,
+      Chat.Repo,
       # Start the Telemetry supervisor
-      CainWeb.Telemetry,
+      ChatWeb.Telemetry,
       # Start the PubSub system
-      {Phoenix.PubSub, name: Cain.PubSub},
+      {Phoenix.PubSub, name: Chat.PubSub},
       # Start the Endpoint (http/https)
-      CainWeb.Endpoint
-      # Start a worker by calling: Cain.Worker.start_link(arg)
-      # {Cain.Worker, arg}
+      ChatWeb.Endpoint
+      # Start a worker by calling: Chat.Worker.start_link(arg)
+      # {Chat.Worker, arg}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: Cain.Supervisor]
+    opts = [strategy: :one_for_one, name: Chat.Supervisor]
     Supervisor.start_link(children, opts)
   end
 
@@ -34,7 +34,7 @@ defmodule Cain.Application do
   # whenever the application is updated.
   @impl true
   def config_change(changed, _new, removed) do
-    CainWeb.Endpoint.config_change(changed, removed)
+    ChatWeb.Endpoint.config_change(changed, removed)
     :ok
   end
 end

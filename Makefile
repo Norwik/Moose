@@ -4,7 +4,7 @@ iex          ?= iex
 
 help: Makefile
 	@echo
-	@echo " Choose a command run in Cain:"
+	@echo " Choose a command run in Chat:"
 	@echo
 	@sed -n 's/^##//p' $< | column -t -s ':' |  sed -e 's/^/ /'
 	@echo
@@ -59,10 +59,10 @@ migrate:
 	$(mix) ecto.setup
 
 
-## run: Run cain
+## run: Run chat
 .PHONY: run
 run:
-	@echo ">> ============= Run cain ============= <<"
+	@echo ">> ============= Run chat ============= <<"
 	$(mix) phx.server
 
 

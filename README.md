@@ -1,4 +1,4 @@
-## Cain
+## Chat
 
 To start the application:
 
@@ -15,8 +15,8 @@ To run `postgresql` with `docker`
 
 ```zsh
 $ docker run -itd \
-  -e POSTGRES_USER=cain \
-  -e POSTGRES_PASSWORD=cain \
+  -e POSTGRES_USER=chat \
+  -e POSTGRES_PASSWORD=chat \
   -p 5432:5432 \
   --name postgresql \
   postgres:latest
@@ -25,19 +25,19 @@ $ docker run -itd \
 
 ### Versioning
 
-For transparency into our release cycle and in striving to maintain backward compatibility, `Cain` is maintained under the [Semantic Versioning guidelines](https://semver.org/) and release process is predictable and business-friendly.
+For transparency into our release cycle and in striving to maintain backward compatibility, `Chat` is maintained under the [Semantic Versioning guidelines](https://semver.org/) and release process is predictable and business-friendly.
 
-See the [Releases section of our GitHub project](https://github.com/clivern/cain/releases) for changelogs for each release version of `Cain`. It contains summaries of the most noteworthy changes made in each release.
+See the [Releases section of our GitHub project](https://github.com/clivern/chat/releases) for changelogs for each release version of `Chat`. It contains summaries of the most noteworthy changes made in each release.
 
 
 ### Bug tracker
 
-If you have any suggestions, bug reports, or annoyances please report them to our issue tracker at https://github.com/clivern/cain/issues
+If you have any suggestions, bug reports, or annoyances please report them to our issue tracker at https://github.com/clivern/chat/issues
 
 
 ### Security Issues
 
-If you discover a security vulnerability within `Cain`, please send an email to [hello@clivern.com](mailto:hello@clivern.com)
+If you discover a security vulnerability within `Chat`, please send an email to [hello@clivern.com](mailto:hello@clivern.com)
 
 
 ### Contributing
@@ -49,4 +49,4 @@ We are an open source, community-driven project so please feel free to join us. 
 
 © 2022, Clivern. Released under [MIT License](https://opensource.org/licenses/mit-license.php).
 
-**Cain** is authored and maintained by [@clivern](http://github.com/clivern).
+**Chat** is authored and maintained by [@clivern](http://github.com/clivern).

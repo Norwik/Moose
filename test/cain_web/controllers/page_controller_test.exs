@@ -2,8 +2,8 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule CainWeb.PageControllerTest do
-  use CainWeb.ConnCase
+defmodule ChatWeb.PageControllerTest do
+  use ChatWeb.ConnCase
 
   test "GET /", %{conn: conn} do
     conn = get(conn, "/")

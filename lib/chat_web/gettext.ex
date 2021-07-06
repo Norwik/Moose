@@ -2,14 +2,14 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule CainWeb.Gettext do
+defmodule ChatWeb.Gettext do
   @moduledoc """
   A module providing Internationalization with a gettext-based API.
 
   By using [Gettext](https://hexdocs.pm/gettext),
   your module gains a set of macros for translations, for example:
 
-      import CainWeb.Gettext
+      import ChatWeb.Gettext
 
       # Simple translation
       gettext("Here is the string to translate")
@@ -24,5 +24,5 @@ defmodule CainWeb.Gettext do
 
   See the [Gettext Docs](https://hexdocs.pm/gettext) for detailed usage.
   """
-  use Gettext, otp_app: :cain
+  use Gettext, otp_app: :chat
 end

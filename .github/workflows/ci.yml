@@ -24,8 +24,8 @@ jobs:
         image: postgres:latest
         ports: ['5432:5432']
         env:
-          POSTGRES_USER: cain
-          POSTGRES_PASSWORD: cain
+          POSTGRES_USER: chat
+          POSTGRES_PASSWORD: chat
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
       - uses: actions/checkout@v3
@@ -37,11 +37,11 @@ jobs:
       - name: Get dependencies
         run: make deps
 
-      - name: Check cain format
+      - name: Check chat format
         run: make fmt_check
 
-      - name: Test cain
+      - name: Test chat
         run: make ci
 
-      - name: Build cain
+      - name: Build chat
         run: make build

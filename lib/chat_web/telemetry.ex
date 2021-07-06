@@ -2,7 +2,7 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule CainWeb.Telemetry do
+defmodule ChatWeb.Telemetry do
   use Supervisor
   import Telemetry.Metrics
 
@@ -35,23 +35,23 @@ defmodule CainWeb.Telemetry do
       ),
 
       # Database Metrics
-      summary("cain.repo.query.total_time",
+      summary("chat.repo.query.total_time",
         unit: {:native, :millisecond},
         description: "The sum of the other measurements"
       ),
-      summary("cain.repo.query.decode_time",
+      summary("chat.repo.query.decode_time",
         unit: {:native, :millisecond},
         description: "The time spent decoding the data received from the database"
       ),
-      summary("cain.repo.query.query_time",
+      summary("chat.repo.query.query_time",
         unit: {:native, :millisecond},
         description: "The time spent executing the query"
       ),
-      summary("cain.repo.query.queue_time",
+      summary("chat.repo.query.queue_time",
         unit: {:native, :millisecond},
         description: "The time spent waiting for a database connection"
       ),
-      summary("cain.repo.query.idle_time",
+      summary("chat.repo.query.idle_time",
         unit: {:native, :millisecond},
         description:
           "The time the connection spent waiting before being checked out for the query"
@@ -69,7 +69,7 @@ defmodule CainWeb.Telemetry do
     [
       # A module, function and arguments to be invoked periodically.
       # This function must call :telemetry.execute/3 and a metric must be added above.
-      # {CainWeb, :count_users, []}
+      # {ChatWeb, :count_users, []}
     ]
   end
 end

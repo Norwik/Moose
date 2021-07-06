@@ -2,7 +2,7 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule Cain.DataCase do
+defmodule Chat.DataCase do
   @moduledoc """
   This module defines the setup for tests requiring
   access to the application's data layer.
@@ -14,7 +14,7 @@ defmodule Cain.DataCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use Cain.DataCase, async: true`, although
+  by setting `use Chat.DataCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -22,17 +22,17 @@ defmodule Cain.DataCase do
 
   using do
     quote do
-      alias Cain.Repo
+      alias Chat.Repo
 
       import Ecto
       import Ecto.Changeset
       import Ecto.Query
-      import Cain.DataCase
+      import Chat.DataCase
     end
   end
 
   setup tags do
-    Cain.DataCase.setup_sandbox(tags)
+    Chat.DataCase.setup_sandbox(tags)
     :ok
   end
 
@@ -40,7 +40,7 @@ defmodule Cain.DataCase do
   Sets up the sandbox based on the test tags.
   """
   def setup_sandbox(tags) do
-    pid = Ecto.Adapters.SQL.Sandbox.start_owner!(Cain.Repo, shared: not tags[:async])
+    pid = Ecto.Adapters.SQL.Sandbox.start_owner!(Chat.Repo, shared: not tags[:async])
     on_exit(fn -> Ecto.Adapters.SQL.Sandbox.stop_owner(pid) end)
   end
 

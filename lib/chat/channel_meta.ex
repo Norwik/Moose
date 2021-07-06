@@ -2,21 +2,21 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule Cain.MessageMeta do
+defmodule Chat.ChannelMeta do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "message_meta" do
+  schema "channel_meta" do
     field :key, :string
     field :value, :string
-    field :message_id, :id
+    field :channel_id, :id
 
     timestamps()
   end
 
   @doc false
-  def changeset(message_meta, attrs) do
-    message_meta
+  def changeset(channel_meta, attrs) do
+    channel_meta
     |> cast(attrs, [:key, :value])
     |> validate_required([:key, :value])
   end

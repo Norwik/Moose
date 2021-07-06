@@ -2,12 +2,12 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule Cain.MixProject do
+defmodule Chat.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :cain,
+      app: :chat,
       version: "0.1.0",
       elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -23,7 +23,7 @@ defmodule Cain.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Cain.Application, []},
+      mod: {Chat.Application, []},
       extra_applications: [:logger, :runtime_tools, :os_mon]
     ]
   end

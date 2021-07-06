@@ -2,15 +2,15 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule CainWeb.Endpoint do
-  use Phoenix.Endpoint, otp_app: :cain
+defmodule ChatWeb.Endpoint do
+  use Phoenix.Endpoint, otp_app: :chat
 
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
   # Set :encryption_salt if you would also like to encrypt it.
   @session_options [
     store: :cookie,
-    key: "_cain_key",
+    key: "_chat_key",
     signing_salt: "Z+Rs6bdk"
   ]
 
@@ -22,7 +22,7 @@ defmodule CainWeb.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/",
-    from: :cain,
+    from: :chat,
     gzip: false,
     only: ~w(assets fonts images favicon.ico robots.txt)
 
@@ -32,7 +32,7 @@ defmodule CainWeb.Endpoint do
     socket "/phoenix/live_reload/socket", Phoenix.LiveReloader.Socket
     plug Phoenix.LiveReloader
     plug Phoenix.CodeReloader
-    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :cain
+    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :chat
   end
 
   plug Phoenix.LiveDashboard.RequestLogger,
@@ -50,5 +50,5 @@ defmodule CainWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
-  plug CainWeb.Router
+  plug ChatWeb.Router
 end

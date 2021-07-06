@@ -2,6 +2,6 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule Cain.Mailer do
-  use Swoosh.Mailer, otp_app: :cain
+defmodule ChatWeb.ClientController do
+  use ChatWeb, :controller
 end

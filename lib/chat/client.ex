@@ -2,21 +2,21 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule Cain.Channel do
+defmodule Chat.Client do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "channel" do
-    field :title, :string
-    field :type, :string
+  schema "client" do
+    field :secret, :string
+    field :uuid, :string
 
     timestamps()
   end
 
   @doc false
-  def changeset(channel, attrs) do
-    channel
-    |> cast(attrs, [:title, :type])
-    |> validate_required([:title, :type])
+  def changeset(client, attrs) do
+    client
+    |> cast(attrs, [:uuid, :secret])
+    |> validate_required([:uuid, :secret])
   end
 end

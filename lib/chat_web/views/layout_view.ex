@@ -2,8 +2,8 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule CainWeb.LayoutView do
-  use CainWeb, :view
+defmodule ChatWeb.LayoutView do
+  use ChatWeb, :view
 
   # Phoenix LiveDashboard is available only in development by default,
   # so we instruct Elixir to not warn if the dashboard route is missing.

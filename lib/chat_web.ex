@@ -2,15 +2,15 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule CainWeb do
+defmodule ChatWeb do
   @moduledoc """
   The entrypoint for defining your web interface, such
   as controllers, views, channels and so on.
 
   This can be used in your application as:
 
-      use CainWeb, :controller
-      use CainWeb, :view
+      use ChatWeb, :controller
+      use ChatWeb, :view
 
   The definitions below will be executed for every view,
   controller, etc, so keep them short and clean, focused
@@ -23,19 +23,19 @@ defmodule CainWeb do
 
   def controller do
     quote do
-      use Phoenix.Controller, namespace: CainWeb
+      use Phoenix.Controller, namespace: ChatWeb
 
       import Plug.Conn
-      import CainWeb.Gettext
-      alias CainWeb.Router.Helpers, as: Routes
+      import ChatWeb.Gettext
+      alias ChatWeb.Router.Helpers, as: Routes
     end
   end
 
   def view do
     quote do
       use Phoenix.View,
-        root: "lib/cain_web/templates",
-        namespace: CainWeb
+        root: "lib/chat_web/templates",
+        namespace: ChatWeb
 
       # Import convenience functions from controllers
       import Phoenix.Controller,
@@ -49,7 +49,7 @@ defmodule CainWeb do
   def live_view do
     quote do
       use Phoenix.LiveView,
-        layout: {CainWeb.LayoutView, "live.html"}
+        layout: {ChatWeb.LayoutView, "live.html"}
 
       unquote(view_helpers())
     end
@@ -84,7 +84,7 @@ defmodule CainWeb do
   def channel do
     quote do
       use Phoenix.Channel
-      import CainWeb.Gettext
+      import ChatWeb.Gettext
     end
   end
 
@@ -99,9 +99,9 @@ defmodule CainWeb do
       # Import basic rendering functionality (render, render_layout, etc)
       import Phoenix.View
 
-      import CainWeb.ErrorHelpers
-      import CainWeb.Gettext
-      alias CainWeb.Router.Helpers, as: Routes
+      import ChatWeb.ErrorHelpers
+      import ChatWeb.Gettext
+      alias ChatWeb.Router.Helpers, as: Routes
     end
   end
 

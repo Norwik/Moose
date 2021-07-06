@@ -2,7 +2,7 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule CainWeb.ErrorHelpers do
+defmodule ChatWeb.ErrorHelpers do
   @moduledoc """
   Conveniences for translating and building error messages.
   """
@@ -43,9 +43,9 @@ defmodule CainWeb.ErrorHelpers do
     # should be written to the errors.po file. The :count option is
     # set by Ecto and indicates we should also apply plural rules.
     if count = opts[:count] do
-      Gettext.dngettext(CainWeb.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(ChatWeb.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(CainWeb.Gettext, "errors", msg, opts)
+      Gettext.dgettext(ChatWeb.Gettext, "errors", msg, opts)
     end
   end
 end

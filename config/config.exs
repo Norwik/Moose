@@ -7,14 +7,14 @@
 # General application configuration
 import Config
 
-config :cain,
-  ecto_repos: [Cain.Repo]
+config :chat,
+  ecto_repos: [Chat.Repo]
 
 # Configures the endpoint
-config :cain, CainWeb.Endpoint,
+config :chat, ChatWeb.Endpoint,
   url: [host: "localhost"],
-  render_errors: [view: CainWeb.ErrorView, accepts: ~w(html json), layout: false],
-  pubsub_server: Cain.PubSub,
+  render_errors: [view: ChatWeb.ErrorView, accepts: ~w(html json), layout: false],
+  pubsub_server: Chat.PubSub,
   live_view: [signing_salt: "/FQ30bq7"]
 
 # Configures the mailer
@@ -24,7 +24,7 @@ config :cain, CainWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :cain, Cain.Mailer, adapter: Swoosh.Adapters.Local
+config :chat, Chat.Mailer, adapter: Swoosh.Adapters.Local
 
 # Swoosh API client is needed for adapters other than SMTP.
 config :swoosh, :api_client, false

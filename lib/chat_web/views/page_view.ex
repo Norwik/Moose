@@ -2,6 +2,6 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule CainWeb.PageView do
-  use CainWeb, :view
+defmodule ChatWeb.PageView do
+  use ChatWeb, :view
 end

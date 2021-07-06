@@ -2,8 +2,8 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule CainWeb.ErrorView do
-  use CainWeb, :view
+defmodule ChatWeb.ErrorView do
+  use ChatWeb, :view
 
   # If you want to customize a particular status code
   # for a certain format, you may uncomment below.
