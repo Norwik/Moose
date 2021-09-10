@@ -6,7 +6,7 @@ To start the application:
 - Create and migrate your database with `make migrate`
 - Start the application with `make run` or `make i`
 
-Now you can visit `localhost:4000`(http://localhost:4000) from your browser.
+Now you can visit [localhost:4000](http://localhost:4000) from your browser.
 
 
 ### Database
