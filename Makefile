@@ -66,6 +66,13 @@ run:
 	$(mix) phx.server
 
 
+## ecto: Run ecto
+.PHONY: ecto
+ecto:
+	@echo ">> ============= Run ecto ============= <<"
+	$(mix) ecto
+
+
 ## ci: Run ci
 .PHONY: ci
 ci: test
