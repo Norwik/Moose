@@ -1,3 +1,7 @@
+# Copyright 2022 Clivern. All rights reserved.
+# Use of this source code is governed by the MIT
+# license that can be found in the LICENSE file.
+
 defmodule Cain.DataCase do
   @moduledoc """
   This module defines the setup for tests requiring

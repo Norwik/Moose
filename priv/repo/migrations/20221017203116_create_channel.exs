@@ -2,13 +2,14 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule Cain.Repo.Migrations.AddClient do
+defmodule Cain.Repo.Migrations.CreateChannel do
   use Ecto.Migration
 
   def change do
-    create table(:client) do
-      add :uuid, :string
-      add :secret, :string
+    create table(:channel) do
+      add :title, :string
+      add :type, :string
+
       timestamps()
     end
   end

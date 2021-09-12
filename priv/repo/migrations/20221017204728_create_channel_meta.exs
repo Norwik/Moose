@@ -2,16 +2,19 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule Cain.Repo.Migrations.AddMessageMeta do
+defmodule Cain.Repo.Migrations.CreateChannelMeta do
   use Ecto.Migration
 
   def change do
-    create table(:message_meta) do
+    create table(:channel_meta) do
       add :key, :string
       add :value, :text
-      add :message_id, references(:message, on_delete: :delete_all), null: false
+      add :channel_id, references(:channel, on_delete: :delete_all), null: false
+
       timestamps()
     end
-    create index(:message_meta, [:key, :message_id])
+
+    create index(:channel_meta, [:key])
+    create index(:channel_meta, [:channel_id])
   end
 end

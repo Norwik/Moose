@@ -2,7 +2,7 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule Cain.Repo.Migrations.AddClientMeta do
+defmodule Cain.Repo.Migrations.CreateClientMeta do
   use Ecto.Migration
 
   def change do
@@ -10,8 +10,11 @@ defmodule Cain.Repo.Migrations.AddClientMeta do
       add :key, :string
       add :value, :text
       add :client_id, references(:client, on_delete: :delete_all), null: false
+
       timestamps()
     end
-    create index(:client_meta, [:key, :client_id])
+
+    create index(:client_meta, [:key])
+    create index(:client_meta, [:client_id])
   end
 end
