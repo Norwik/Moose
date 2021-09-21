@@ -7,7 +7,6 @@ defmodule Cain.ChannelClients do
   import Ecto.Changeset
 
   schema "channel_clients" do
-
     field :channel_id, :id
     field :client_id, :id
 

@@ -10,7 +10,15 @@ jobs:
       fail-fast: false
       matrix:
         otp: ['25.1']
-        elixir: ['1.13.0', '1.13.1', '1.13.2', '1.13.3', '1.13.4', '1.14.0', '1.14.1']
+        elixir: [
+          '1.13.0',
+          '1.13.1',
+          '1.13.2',
+          '1.13.3',
+          '1.13.4',
+          '1.14.0',
+          '1.14.1'
+        ]
     services:
       db:
         image: postgres:latest
@@ -18,7 +26,10 @@ jobs:
         env:
           POSTGRES_USER: cain
           POSTGRES_PASSWORD: cain
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+        options: --health-cmd pg_isready \
+          --health-interval 10s \
+          --health-timeout 5s \
+          --health-retries 5
     steps:
       - uses: actions/checkout@v3
       - uses: erlef/setup-beam@v1
