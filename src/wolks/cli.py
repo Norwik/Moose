@@ -23,43 +23,18 @@
 import argparse
 import logging
 import sys
+import asyncore
+import socket
 
-from wolk import __version__
+from wolks import __version__
+from .mail_server import handle_signals, MailServer
+
 
 __author__ = "Clivern"
 __copyright__ = "Clivern"
 __license__ = "MIT"
 
 _logger = logging.getLogger(__name__)
-
-
-# ---- Python API ----
-# The functions defined in this section can be imported by users in their
-# Python scripts/interactive interpreter, e.g. via
-# `from wolk.skeleton import fib`,
-# when using this Python module as a library.
-
-
-def fib(n):
-    """Fibonacci example function
-
-    Args:
-      n (int): integer
-
-    Returns:
-      int: n-th Fibonacci number
-    """
-    assert n > 0
-    a, b = 1, 1
-    for _i in range(n - 1):
-        a, b = b, a + b
-    return a
-
-
-# ---- CLI ----
-# The functions defined in this section are wrappers around the main Python
-# API allowing them to be called directly from the terminal as a CLI
-# executable/script.
 
 
 def parse_args(args):
@@ -72,13 +47,41 @@ def parse_args(args):
     Returns:
       :obj:`argparse.Namespace`: command line parameters namespace
     """
-    parser = argparse.ArgumentParser(description="Just a Fibonacci demonstration")
+    parser = argparse.ArgumentParser(description="A Fake SMTP Server in Python")
+
     parser.add_argument(
         "--version",
         action="version",
-        version="wolk {ver}".format(ver=__version__),
+        version="Wolks {ver}".format(ver=__version__),
     )
-    parser.add_argument(dest="n", help="n-th Fibonacci number", type=int, metavar="INT")
+
+    parser.add_argument(
+        "--host",
+        dest="host",
+        help="The hostname",
+        type=str,
+        metavar="STR",
+        default="localhost",
+    )
+
+    parser.add_argument(
+        "--port",
+        dest="port",
+        help="The port number",
+        type=int,
+        metavar="INT",
+        default=25,
+    )
+
+    parser.add_argument(
+        "--path",
+        dest="path",
+        help="The path",
+        type=str,
+        metavar="STR",
+        default="./",
+    )
+
     parser.add_argument(
         "-v",
         "--verbose",
@@ -87,6 +90,7 @@ def parse_args(args):
         action="store_const",
         const=logging.INFO,
     )
+
     parser.add_argument(
         "-vv",
         "--very-verbose",
@@ -95,11 +99,13 @@ def parse_args(args):
         action="store_const",
         const=logging.DEBUG,
     )
+
     return parser.parse_args(args)
 
 
 def setup_logging(loglevel):
-    """Setup basic logging
+    """
+    Setup basic logging
 
     Args:
       loglevel (int): minimum loglevel for emitting messages
@@ -111,39 +117,37 @@ def setup_logging(loglevel):
 
 
 def main(args):
-    """Wrapper allowing :func:`fib` to be called with string arguments in a CLI fashion
-
-    Instead of returning the value from :func:`fib`, it prints the result to the
-    ``stdout`` in a nicely formatted message.
-
-    Args:
-      args (List[str]): command line parameters as list of strings
-          (for example  ``["--verbose", "42"]``).
-    """
     args = parse_args(args)
     setup_logging(args.loglevel)
-    _logger.debug("Starting crazy calculations...")
-    print("The {}-th Fibonacci number is {}".format(args.n, fib(args.n)))
-    _logger.info("Script ends here")
+
+    _logger.info("Start wolks on host {} and port {} and path {}".format(
+        args.host,
+        args.port,
+        args.path
+    ))
+
+    handle_signals()
+
+    try:
+        server = MailServer((args.host, args.port), None, args.path)
+    except Exception as e:
+        _logger.error("Error while starting server {}".format(str(e)))
+        sys.exit()
+
+    _logger.info("Listening on host {} and port {}".format(
+        args.host,
+        args.port
+    ))
+
+    try:
+        asyncore.loop()
+    except KeyboardInterrupt:
+        sys.exit()
 
 
 def run():
-    """Calls :func:`main` passing the CLI arguments extracted from :obj:`sys.argv`
-
-    This function can be used as entry point to create console scripts with setuptools.
-    """
     main(sys.argv[1:])
 
 
 if __name__ == "__main__":
-    # ^  This is a guard statement that will prevent the following code from
-    #    being executed in the case someone imports this file instead of
-    #    executing it as a script.
-    #    https://docs.python.org/3/library/__main__.html
-
-    # After installing your project with pip, users can also run your Python
-    # modules as scripts via the ``-m`` flag, as defined in PEP 338::
-    #
-    #     python -m wolk.cli 42
-    #
     run()

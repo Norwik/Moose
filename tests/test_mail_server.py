@@ -20,44 +20,10 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import asyncore
-import getopt
-import os
-import signal
-import smtpd
-import sys
-from datetime import datetime
+import pytest
+
+from wolks.mail_server import MailServer
 
 
-class MailServer(smtpd.SMTPServer):
-
-    RECIPIENT_COUNTER = {}
-
-    def __init__(self, localaddr, remoteaddr, path):
-        smtpd.SMTPServer.__init__(self, localaddr, remoteaddr)
-        self.path = path
-
-    def process_message(self, peer, mailfrom, rcpttos, data, **kwargs):
-        file = "{}{}.log".format(
-            self.path,
-            str(datetime.now().isoformat(timespec='microseconds'))
-        )
-
-        out = "Mail From: {} \nMail To: {} \nData: {}".format(
-            mailfrom,
-            ", ".join(rcpttos),
-            data.decode("utf-8")
-        )
-
-        f = open(file, "w")
-        f.write(out)
-        f.close()
-
-
-def handle_signals():
-
-    def signal_handler(signum, frame):
-        sys.exit()
-
-    for sig in (signal.SIGINT, signal.SIGTERM, signal.SIGHUP):
-        signal.signal(sig, signal_handler)
+def test_func():
+    assert 1 == 1
