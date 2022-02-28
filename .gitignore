@@ -32,3 +32,4 @@ cain-*.tar
 npm-debug.log
 /assets/node_modules/
 
+cain_*

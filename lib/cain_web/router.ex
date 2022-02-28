@@ -24,10 +24,15 @@ defmodule CainWeb.Router do
     get "/", PageController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", CainWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", CainWeb do
+    pipe_through :api
+
+    get "/channel", ChannelController, :list
+    post "/channel", ChannelController, :create
+    get "/channel/:id", ChannelController, :index
+    put "/channel/:id", ChannelController, :update
+    delete "/channel/:id", ChannelController, :delete
+  end
 
   # Enables LiveDashboard only for development
   #
