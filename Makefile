@@ -73,6 +73,13 @@ ecto:
 	$(mix) ecto
 
 
+## v: Get version
+.PHONY: v
+v:
+	@echo ">> ============= Get application version ============= <<"
+	$(mix) version
+
+
 ## ci: Run ci
 .PHONY: ci
 ci: test

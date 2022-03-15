@@ -16,6 +16,7 @@ defmodule ChatWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug CORSPlug
   end
 
   pipeline :pub do
@@ -59,6 +60,11 @@ defmodule ChatWeb.Router do
 
   scope "/action/v1", ChatWeb do
     pipe_through :api
+
+    post "/join", ActionController, :join
+    post "/signup", ActionController, :signup
+    post "/login", ActionController, :login
+    post "/reset-password", ActionController, :reset_password
   end
 
   # Enables LiveDashboard only for development

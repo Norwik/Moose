@@ -5,10 +5,14 @@
 defmodule Chat.MixProject do
   use Mix.Project
 
+  @version "0.1.0"
+
+  def get_version, do: @version
+
   def project do
     [
       app: :chat,
-      version: "0.1.0",
+      version: @version,
       elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [] ++ Mix.compilers(),
@@ -73,5 +77,13 @@ defmodule Chat.MixProject do
       test: ["ecto.create --quiet", "ecto.migrate --quiet", "test"],
       "assets.deploy": ["esbuild default --minify", "phx.digest"]
     ]
+  end
+end
+
+defmodule Mix.Tasks.Version do
+  use Mix.Task
+
+  def run(_) do
+    Mix.shell().info("Currnt Version: v#{Chat.MixProject.get_version()}")
   end
 end
