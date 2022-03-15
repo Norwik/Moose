@@ -54,7 +54,8 @@ defmodule Chat.MixProject do
       {:gettext, "~> 0.20"},
       {:jason, "~> 1.4"},
       {:plug_cowboy, "~> 2.5"},
-      {:argon2_elixir, "~> 3.0"}
+      {:argon2_elixir, "~> 3.0"},
+      {:cors_plug, "~> 3.0"}
     ]
   end
 
