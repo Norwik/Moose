@@ -4,7 +4,6 @@
 
 defmodule ChatWeb.ChannelController do
   use ChatWeb, :controller
-  alias Chat.UserContext
 
   def list(conn, _params) do
     conn

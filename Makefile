@@ -45,6 +45,14 @@ build:
 	$(mix) compile --warnings-as-errors
 
 
+## release: Release the code
+.PHONY: release
+release:
+	@echo ">> ============= Release the code ============= <<"
+	-rm -rf _build
+	MIX_ENV=prod mix release
+
+
 ## i: Run interactive shell
 .PHONY: i
 i:
