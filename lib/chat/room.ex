@@ -4,13 +4,26 @@
 
 defmodule Chat.Room do
   use Ecto.Schema
-  # import Ecto.Changeset
+  import Ecto.Changeset
 
-  schema "room" do
-    field :key, :string
-    field :value, :string
+  schema "rooms" do
+    field :country, :string
+    field :icon, :string
+    field :is_private, :boolean, default: false
+    field :name, :string
+    field :slug, :string
+    field :state, :string
+    field :uuid, Ecto.UUID
+    field :user_id, :id
     field :client_id, :id
 
     timestamps()
+  end
+
+  @doc false
+  def changeset(room, attrs) do
+    room
+    |> cast(attrs, [:name, :uuid, :slug, :icon, :is_private, :country, :state])
+    |> validate_required([:name, :uuid, :slug, :icon, :is_private, :country, :state])
   end
 end

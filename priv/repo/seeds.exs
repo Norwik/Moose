@@ -13,3 +13,23 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+
+user_data = %{
+  name: "John Smith",
+  username: "john_smith",
+  email: "john_smith@example.com",
+  password_hash: "hashed_password",
+  verified: false,
+  gender: "male",
+  country: "USA",
+  state: "CA",
+  age: 30,
+  last_seen: DateTime.utc_now()
+}
+
+changeset = Chat.User.changeset(%Chat.User{}, user_data)
+
+case Chat.Repo.insert(changeset) do
+  {:ok, user} -> IO.puts inspect(user)
+  {:error, changeset} -> IO.puts inspect(changeset)
+end

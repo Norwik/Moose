@@ -4,13 +4,26 @@
 
 defmodule Chat.Client do
   use Ecto.Schema
-  # import Ecto.Changeset
+  import Ecto.Changeset
 
-  schema "client" do
-    field :key, :string
-    field :value, :string
-    field :client_id, :id
+  schema "clients" do
+    field :age, :integer
+    field :country, :string
+    field :gender, :string
+    field :last_seen, :utc_datetime
+    field :secret, :string
+    field :state, :string
+    field :username, :string
+    field :uuid, Ecto.UUID
+    field :user_id, :id
 
     timestamps()
+  end
+
+  @doc false
+  def changeset(client, attrs) do
+    client
+    |> cast(attrs, [:uuid, :secret, :username, :gender, :country, :state, :age, :last_seen])
+    |> validate_required([:uuid, :secret, :username, :gender, :country, :state, :age, :last_seen])
   end
 end

@@ -4,13 +4,23 @@
 
 defmodule Chat.Message do
   use Ecto.Schema
-  # import Ecto.Changeset
+  import Ecto.Changeset
 
-  schema "message" do
-    field :key, :string
-    field :value, :string
+  schema "messages" do
+    field :content, :string
+    field :type, :string
+    field :uuid, Ecto.UUID
     field :client_id, :id
+    field :room_id, :id
+    field :channel_id, :id
 
     timestamps()
+  end
+
+  @doc false
+  def changeset(message, attrs) do
+    message
+    |> cast(attrs, [:content, :uuid, :type])
+    |> validate_required([:content, :uuid, :type])
   end
 end

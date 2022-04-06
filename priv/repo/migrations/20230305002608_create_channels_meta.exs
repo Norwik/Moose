@@ -2,19 +2,19 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule Chat.Repo.Migrations.CreateRoomMeta do
+defmodule Chat.Repo.Migrations.CreateChannelsMeta do
   use Ecto.Migration
 
   def change do
-    create table(:room_meta) do
+    create table(:channels_meta) do
       add :key, :string
       add :value, :text
-      add :room_id, references(:room, on_delete: :delete_all), null: false
+      add :channel_id, references(:channels, on_delete: :delete_all)
 
       timestamps()
     end
 
-    create index(:room_meta, [:key])
-    create index(:room_meta, [:room_id])
+    create index(:channels_meta, [:key])
+    create index(:channels_meta, [:channel_id])
   end
 end

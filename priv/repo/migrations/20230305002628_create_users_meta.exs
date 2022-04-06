@@ -2,19 +2,19 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule Chat.Repo.Migrations.CreateUserMeta do
+defmodule Chat.Repo.Migrations.CreateUsersMeta do
   use Ecto.Migration
 
   def change do
-    create table(:user_meta) do
+    create table(:users_meta) do
       add :key, :string
       add :value, :text
-      add :user_id, references(:user, on_delete: :delete_all), null: false
+      add :user_id, references(:users, on_delete: :delete_all)
 
       timestamps()
     end
 
-    create index(:user_meta, [:key])
-    create index(:user_meta, [:user_id])
+    create index(:users_meta, [:key])
+    create index(:users_meta, [:user_id])
   end
 end

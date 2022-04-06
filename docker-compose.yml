@@ -1,15 +1,27 @@
 version: '3.8'
 
 services:
-  db:
-    image: postgres:15.2
-    restart: unless-stopped
+ app:
+    build:
+      context: .
     environment:
-      - POSTGRES_DB=chat
-      - POSTGRES_USER=root
-      - POSTGRES_PASSWORD=D1q9f0C2&PEW
+      PGUSER: root
+      PGPASSWORD: D1q9f0C2&PEW
+      PGDATABASE: chat
+      PGPORT: 5432
+      PGHOST: db
+    restart: unless-stopped
     ports:
-      - '5432:5432'
+      - '4000:4000'
+    depends_on:
+      - db
+ db:
+    image: postgres:15.2
+    environment:
+      POSTGRES_DB: chat
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: D1q9f0C2&PEW
+    restart: unless-stopped
     volumes:
       - db:/var/lib/postgresql/data
 

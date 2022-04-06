@@ -58,9 +58,10 @@ To run `postgresql` with `docker`
 $ docker run -itd \
     -e POSTGRES_USER=chat \
     -e POSTGRES_PASSWORD=chat \
+    -e POSTGRES_DB=chat_dev \
     -p 5432:5432 \
     --name postgresql \
-    postgres:latest
+    postgres:15.2
 ```
 
 
