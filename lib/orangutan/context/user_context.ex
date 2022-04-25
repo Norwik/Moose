@@ -196,8 +196,8 @@ defmodule Orangutan.Context.UserContext do
   Update a user meta attribute
   """
   def update_user_meta(user_meta, attrs) do
-    changeset = UserMeta.changeset(user_meta, attrs)
-    Repo.update(changeset)
+    UserMeta.changeset(user_meta, attrs)
+    |> Repo.update()
   end
 
   @doc """

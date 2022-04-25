@@ -126,8 +126,8 @@ defmodule Orangutan.Context.ChannelContext do
   Update a channel meta attribute
   """
   def update_channel_meta(channel_meta, attrs) do
-    changeset = ChannelMeta.changeset(channel_meta, attrs)
-    Repo.update(changeset)
+    ChannelMeta.changeset(channel_meta, attrs)
+    |> Repo.update()
   end
 
   @doc """

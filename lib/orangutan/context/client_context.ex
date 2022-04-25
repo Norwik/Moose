@@ -194,8 +194,8 @@ defmodule Orangutan.Context.ClientContext do
   Update a client meta attribute
   """
   def update_client_meta(client_meta, attrs) do
-    changeset = ClientMeta.changeset(client_meta, attrs)
-    Repo.update(changeset)
+    ClientMeta.changeset(client_meta, attrs)
+    |> Repo.update()
   end
 
   @doc """

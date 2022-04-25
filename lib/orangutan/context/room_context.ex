@@ -202,8 +202,8 @@ defmodule Orangutan.Context.RoomContext do
   Update a room meta attribute
   """
   def update_room_meta(room_meta, attrs) do
-    changeset = RoomMeta.changeset(room_meta, attrs)
-    Repo.update(changeset)
+    RoomMeta.changeset(room_meta, attrs)
+    |> Repo.update()
   end
 
   @doc """

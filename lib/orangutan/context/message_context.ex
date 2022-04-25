@@ -193,8 +193,8 @@ defmodule Orangutan.Context.MessageContext do
   Get a channel map
   """
   def update_message_meta(message_meta, attrs) do
-    changeset = MessageMeta.changeset(message_meta, attrs)
-    Repo.update(changeset)
+    MessageMeta.changeset(message_meta, attrs)
+    |> Repo.update()
   end
 
   # Delete a message meta attribute
