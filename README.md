@@ -1,7 +1,7 @@
 <p align="center">
     <img alt="Orangutan Logo" src="/assets/img/logo.png" width="180" />
     <h3 align="center">Orangutan</h3>
-    <p align="center">An Online Free Chat Rooms System, Set up in Minutes.</p>
+    <p align="center">A Disposable, Secure, Anonymous Email Server, Set up in Minutes.</p>
     <p align="center">
         <a href="https://github.com/Clivern/Orangutan/actions/workflows/ci.yml">
             <img src="https://github.com/Clivern/Orangutan/actions/workflows/ci.yml/badge.svg"/>
@@ -15,7 +15,7 @@
     </p>
 </p>
 
-Orangutan is an online free chat rooms system with an unexpected focus on privacy. It is a platform where you can have a live discussion without registration! It supports also a private conversations. And once you signout, all your informations and messages gets wiped out. Even for registered users, the platform doesn't store conversations.
+Orangutan is a disposable, secure, anonymous email server. It allows to receive email at a temporary address that self-destructed after a certain time elapses. Orangutan is most advanced throwaway email service that helps you avoid spam and stay safe.
 
 
 ### Getting Started
