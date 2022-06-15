@@ -22,13 +22,13 @@ defmodule ChatWeb.UserController do
         else
           conn
           |> put_status(:not_found)
-          |> render("error.json", %{error: "User with id #{id} not found"})
+          |> render("error.json", %{error: "User with ID #{id} not found"})
         end
 
       _ ->
         conn
         |> put_status(:bad_request)
-        |> render("error.json", %{error: "Invalid user ID"})
+        |> render("error.json", %{error: "Invalid User ID"})
     end
   end
 
@@ -36,15 +36,17 @@ defmodule ChatWeb.UserController do
   def list(conn, params) do
     limit = String.to_integer(params["limit"] || @default_list_limit)
     offset = String.to_integer(params["offset"] || @default_list_offset)
+    country = params["country"] || ""
+    gender = params["gender"] || ""
 
-    users = UserContext.list_users_by_limit(offset, limit)
+    users = UserContext.get_users(country, gender, offset, limit)
 
     render(conn, "list.json", %{
       users: users,
       metadata: %{
         limit: limit,
         offset: offset,
-        totalCount: UserContext.count_users()
+        totalCount: UserContext.count_users(country, gender)
       }
     })
   end
@@ -121,13 +123,13 @@ defmodule ChatWeb.UserController do
         else
           conn
           |> put_status(:not_found)
-          |> render("error.json", %{error: "User with id #{id} not found"})
+          |> render("error.json", %{error: "User with ID #{id} not found"})
         end
 
       _ ->
         conn
         |> put_status(:bad_request)
-        |> render("error.json", %{error: "Invalid user ID"})
+        |> render("error.json", %{error: "Invalid User ID"})
     end
   end
 
@@ -145,13 +147,13 @@ defmodule ChatWeb.UserController do
         else
           conn
           |> put_status(:not_found)
-          |> render("error.json", %{error: "User with id #{id} not found"})
+          |> render("error.json", %{error: "User with ID #{id} not found"})
         end
 
       _ ->
         conn
         |> put_status(:bad_request)
-        |> render("error.json", %{error: "Invalid user ID"})
+        |> render("error.json", %{error: "Invalid User ID"})
     end
   end
 end

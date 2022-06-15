@@ -2,6 +2,7 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
+# User Context Module
 defmodule Chat.UserContext do
   require Argon2
   import Ecto.Query
@@ -40,11 +41,36 @@ defmodule Chat.UserContext do
   end
 
   # Count all users
-  def count_users() do
-    from(u in User,
-      select: count(u.id)
-    )
-    |> Repo.one()
+  def count_users(country, gender) do
+    case {country, gender} do
+      {country, gender} when country != "" and gender != "" ->
+        from(u in User,
+          select: count(u.id),
+          where: u.country == ^country,
+          where: u.gender == ^gender
+        )
+        |> Repo.one()
+
+      {country, gender} when country == "" and gender == "" ->
+        from(u in User,
+          select: count(u.id)
+        )
+        |> Repo.one()
+
+      {country, gender} when country != "" and gender == "" ->
+        from(u in User,
+          select: count(u.id),
+          where: u.country == ^country
+        )
+        |> Repo.one()
+
+      {country, gender} when country == "" and gender != "" ->
+        from(u in User,
+          select: count(u.id),
+          where: u.gender == ^gender
+        )
+        |> Repo.one()
+    end
   end
 
   # Retrieve a user by ID
@@ -83,17 +109,45 @@ defmodule Chat.UserContext do
   end
 
   # Retrieve all users
-  def list_users() do
+  def get_users() do
     Repo.all(User)
   end
 
-  # Retrieve users with limit
-  def list_users_by_limit(offset, limit) do
-    from(u in User,
-      limit: ^limit,
-      offset: ^offset
-    )
-    |> Repo.all()
+  # Retrieve users
+  def get_users(country, gender, offset, limit) do
+    case {country, gender, offset, limit} do
+      {country, gender, offset, limit} when country != "" and gender != "" ->
+        from(u in User,
+          where: u.country == ^country,
+          where: u.gender == ^gender,
+          limit: ^limit,
+          offset: ^offset
+        )
+        |> Repo.all()
+
+      {country, gender, offset, limit} when country == "" and gender == "" ->
+        from(u in User,
+          limit: ^limit,
+          offset: ^offset
+        )
+        |> Repo.all()
+
+      {country, gender, offset, limit} when country != "" and gender == "" ->
+        from(u in User,
+          where: u.country == ^country,
+          limit: ^limit,
+          offset: ^offset
+        )
+        |> Repo.all()
+
+      {country, gender, offset, limit} when country == "" and gender != "" ->
+        from(u in User,
+          where: u.gender == ^gender,
+          limit: ^limit,
+          offset: ^offset
+        )
+        |> Repo.all()
+    end
   end
 
   # Create a new user meta attribute
