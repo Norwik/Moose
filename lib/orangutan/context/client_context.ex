@@ -2,8 +2,11 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-# Client Context Module
 defmodule Orangutan.Context.ClientContext do
+  @moduledoc """
+  Client Context Module
+  """
+
   import Ecto.Query
   alias Orangutan.Repo
   alias Orangutan.Model.{ClientMeta, Client}

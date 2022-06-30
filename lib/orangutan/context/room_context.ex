@@ -2,8 +2,11 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-# Room Context Module
 defmodule Orangutan.Context.RoomContext do
+  @moduledoc """
+  Room Context Module
+  """
+
   import Ecto.Query
   alias Orangutan.Repo
   alias Orangutan.Model.{RoomMeta, Room}
@@ -178,11 +181,6 @@ defmodule Orangutan.Context.RoomContext do
   # Delete a room meta attribute
   def delete_room_meta(room_meta) do
     Repo.delete(room_meta)
-  end
-
-  # Validate a room password
-  def validate_password(plain_password, hash) do
-    Argon2.verify_pass(plain_password, hash)
   end
 
   # Get room meta by room and key

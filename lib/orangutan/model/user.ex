@@ -3,6 +3,10 @@
 # license that can be found in the LICENSE file.
 
 defmodule Orangutan.Model.User do
+  @moduledoc """
+  User Model
+  """
+
   use Ecto.Schema
   import Ecto.Changeset
 

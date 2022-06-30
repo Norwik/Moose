@@ -2,8 +2,11 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-# User Context Module
 defmodule Orangutan.Context.UserContext do
+  @moduledoc """
+  User Context Module
+  """
+
   require Argon2
   import Ecto.Query
   alias Orangutan.Repo
