@@ -41,9 +41,7 @@ defmodule Orangutan.Model.Room do
       :icon,
       :is_private,
       :country,
-      :state,
-      :user_id,
-      :client_id
+      :state
     ])
   end
 end

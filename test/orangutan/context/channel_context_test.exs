@@ -7,5 +7,4 @@ defmodule Orangutan.Context.ChannelContextTest do
   Channel Context Test Cases
   """
   use Orangutan.DataCase
-  alias Orangutan.Context.ChannelContext, as: ChannelContext
 end

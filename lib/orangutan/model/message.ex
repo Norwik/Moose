@@ -32,9 +32,7 @@ defmodule Orangutan.Model.Message do
       :content,
       :uuid,
       :type,
-      :client_id,
-      :room_id,
-      :channel_id
+      :client_id
     ])
   end
 end
