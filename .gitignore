@@ -20,7 +20,7 @@ erl_crash.dump
 *.ez
 
 # Ignore package tarball (built via "mix hex.build").
-chat-*.tar
+orangutan-*.tar
 
 # Ignore assets that are produced by build tools.
 /priv/static/assets/
@@ -32,6 +32,6 @@ chat-*.tar
 npm-debug.log
 /assets/node_modules/
 
-chat_test*
-chat_dev*
+orangutan_test*
+orangutan_dev*
 .vscode

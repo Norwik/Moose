@@ -9,7 +9,7 @@
 # Inside the script, you can read and write to any of your
 # repositories directly:
 #
-#     Chat.Repo.insert!(%Chat.SomeSchema{})
+#     Orangutan.Repo.insert!(%Orangutan.SomeSchema{})
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
@@ -27,9 +27,9 @@ user_data = %{
   last_seen: DateTime.utc_now()
 }
 
-changeset = Chat.User.changeset(%Chat.User{}, user_data)
+changeset = Orangutan.User.changeset(%Orangutan.User{}, user_data)
 
-case Chat.Repo.insert(changeset) do
+case Orangutan.Repo.insert(changeset) do
   {:ok, user} -> IO.puts inspect(user)
   {:error, changeset} -> IO.puts inspect(changeset)
 end

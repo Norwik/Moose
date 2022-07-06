@@ -7,14 +7,14 @@
 # General application configuration
 import Config
 
-config :chat,
-  ecto_repos: [Chat.Repo]
+config :orangutan,
+  ecto_repos: [Orangutan.Repo]
 
 # Configures the endpoint
-config :chat, ChatWeb.Endpoint,
+config :orangutan, OrangutanWeb.Endpoint,
   url: [host: "localhost"],
-  render_errors: [view: ChatWeb.ErrorView, accepts: ~w(html json), layout: false],
-  pubsub_server: Chat.PubSub,
+  render_errors: [view: OrangutanWeb.ErrorView, accepts: ~w(html json), layout: false],
+  pubsub_server: Orangutan.PubSub,
   live_view: [signing_salt: "/FQ30bq7"]
 
 # Configures the mailer
@@ -24,7 +24,7 @@ config :chat, ChatWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :chat, Chat.Mailer, adapter: Swoosh.Adapters.Local
+config :orangutan, Orangutan.Mailer, adapter: Swoosh.Adapters.Local
 
 # Swoosh API client is needed for adapters other than SMTP.
 config :swoosh, :api_client, false

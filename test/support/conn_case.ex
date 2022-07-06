@@ -2,7 +2,7 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule ChatWeb.ConnCase do
+defmodule OrangutanWeb.ConnCase do
   @moduledoc """
   This module defines the test case to be used by
   tests that require setting up a connection.
@@ -15,7 +15,7 @@ defmodule ChatWeb.ConnCase do
   we enable the SQL sandbox, so changes done to the database
   are reverted at the end of every test. If you are using
   PostgreSQL, you can even run database tests asynchronously
-  by setting `use ChatWeb.ConnCase, async: true`, although
+  by setting `use OrangutanWeb.ConnCase, async: true`, although
   this option is not recommended for other databases.
   """
 
@@ -26,17 +26,17 @@ defmodule ChatWeb.ConnCase do
       # Import conveniences for testing with connections
       import Plug.Conn
       import Phoenix.ConnTest
-      import ChatWeb.ConnCase
+      import OrangutanWeb.ConnCase
 
-      alias ChatWeb.Router.Helpers, as: Routes
+      alias OrangutanWeb.Router.Helpers, as: Routes
 
       # The default endpoint for testing
-      @endpoint ChatWeb.Endpoint
+      @endpoint OrangutanWeb.Endpoint
     end
   end
 
   setup tags do
-    Chat.DataCase.setup_sandbox(tags)
+    Orangutan.DataCase.setup_sandbox(tags)
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
 end

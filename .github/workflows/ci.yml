@@ -24,8 +24,9 @@ jobs:
         image: postgres:latest
         ports: ['5432:5432']
         env:
-          POSTGRES_USER: chat
-          POSTGRES_PASSWORD: chat
+          POSTGRES_DB: gorilla_dev
+          POSTGRES_USER: gorilla
+          POSTGRES_PASSWORD: gorilla
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
       - uses: actions/checkout@v3
@@ -37,11 +38,11 @@ jobs:
       - name: Get dependencies
         run: make deps
 
-      - name: Check chat format
+      - name: Check orangutan format
         run: make fmt_check
 
-      - name: Test chat
+      - name: Test orangutan
         run: make ci
 
-      - name: Build chat
+      - name: Build orangutan
         run: make build
