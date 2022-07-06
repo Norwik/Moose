@@ -8,7 +8,10 @@ defmodule Chat.Repo.Migrations.CreateMessage do
   def change do
     create table(:message) do
       add :content, :text
-      add :status, :string
+      add :type, :string
+      add :client_id, references(:client, on_delete: :delete_all), null: false
+      add :room_id, references(:room, on_delete: :delete_all), null: true
+      add :channel_id, references(:channel, on_delete: :delete_all), null: true
 
       timestamps()
     end

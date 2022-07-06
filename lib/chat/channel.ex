@@ -4,19 +4,13 @@
 
 defmodule Chat.Channel do
   use Ecto.Schema
-  import Ecto.Changeset
+  # import Ecto.Changeset
 
   schema "channel" do
-    field :title, :string
-    field :type, :string
+    field :uuid, :string
+    field :first_user_id, :id
+    field :second_user_id, :id
 
     timestamps()
-  end
-
-  @doc false
-  def changeset(channel, attrs) do
-    channel
-    |> cast(attrs, [:title, :type])
-    |> validate_required([:title, :type])
   end
 end

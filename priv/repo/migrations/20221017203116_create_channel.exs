@@ -7,8 +7,9 @@ defmodule Chat.Repo.Migrations.CreateChannel do
 
   def change do
     create table(:channel) do
-      add :title, :string
-      add :type, :string
+      add :uuid, :string
+      add :first_user_id, references(:user, on_delete: :delete_all), null: false
+      add :second_user_id, references(:user, on_delete: :delete_all), null: false
 
       timestamps()
     end

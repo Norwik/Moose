@@ -2,14 +2,14 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule Chat.Client do
+defmodule Chat.RoomMeta do
   use Ecto.Schema
   # import Ecto.Changeset
 
-  schema "client" do
+  schema "room_meta" do
     field :key, :string
     field :value, :string
-    field :client_id, :id
+    field :room_id, :id
 
     timestamps()
   end
