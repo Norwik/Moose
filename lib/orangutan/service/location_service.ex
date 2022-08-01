@@ -2,7 +2,6 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-# Location Service Module
 defmodule Orangutan.Service.LocationService do
   @moduledoc """
   Location Service Module
