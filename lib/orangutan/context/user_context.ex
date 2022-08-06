@@ -3,10 +3,11 @@
 # license that can be found in the LICENSE file.
 
 # User Context Module
-defmodule Orangutan.UserContext do
+defmodule Orangutan.Context.UserContext do
   require Argon2
   import Ecto.Query
-  alias Orangutan.{Repo, UserMeta, User}
+  alias Orangutan.Repo
+  alias Orangutan.Model.{UserMeta, User}
 
   # Get a user map
   def new_user(user \\ %{}) do
@@ -151,8 +152,8 @@ defmodule Orangutan.UserContext do
   end
 
   # Create a new user meta attribute
-  def create_user_meta(user_id, attrs \\ %{}) do
-    changeset = UserMeta.changeset(%UserMeta{}, %{user_id: user_id} ++ attrs)
+  def create_user_meta(attrs \\ %{}) do
+    changeset = UserMeta.changeset(%UserMeta{}, attrs)
     Repo.insert(changeset)
   end
 

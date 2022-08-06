@@ -4,7 +4,7 @@
 
 defmodule OrangutanWeb.ClientController do
   use OrangutanWeb, :controller
-  alias Orangutan.ClientContext
+  alias Orangutan.Context.ClientContext
 
   @default_list_limit "10"
   @default_list_offset "0"

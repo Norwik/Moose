@@ -3,9 +3,10 @@
 # license that can be found in the LICENSE file.
 
 # Client Context Module
-defmodule Orangutan.ClientContext do
+defmodule Orangutan.Context.ClientContext do
   import Ecto.Query
-  alias Orangutan.{Repo, ClientMeta, Client}
+  alias Orangutan.Repo
+  alias Orangutan.Model.{ClientMeta, Client}
 
   # Get a client map
   def new_client(client \\ %{}) do
@@ -149,8 +150,8 @@ defmodule Orangutan.ClientContext do
   end
 
   # Create a new client meta attribute
-  def create_client_meta(client_id, attrs \\ %{}) do
-    changeset = ClientMeta.changeset(%ClientMeta{}, %{client_id: client_id} ++ attrs)
+  def create_client_meta(attrs \\ %{}) do
+    changeset = ClientMeta.changeset(%ClientMeta{}, attrs)
     Repo.insert(changeset)
   end
 

@@ -2,7 +2,7 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule Orangutan.Room do
+defmodule Orangutan.Model.Room do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -23,7 +23,27 @@ defmodule Orangutan.Room do
   @doc false
   def changeset(room, attrs) do
     room
-    |> cast(attrs, [:name, :uuid, :slug, :icon, :is_private, :country, :state])
-    |> validate_required([:name, :uuid, :slug, :icon, :is_private, :country, :state])
+    |> cast(attrs, [
+      :name,
+      :uuid,
+      :slug,
+      :icon,
+      :is_private,
+      :country,
+      :state,
+      :user_id,
+      :client_id
+    ])
+    |> validate_required([
+      :name,
+      :uuid,
+      :slug,
+      :icon,
+      :is_private,
+      :country,
+      :state,
+      :user_id,
+      :client_id
+    ])
   end
 end

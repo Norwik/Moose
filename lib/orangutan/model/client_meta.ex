@@ -2,7 +2,7 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule Orangutan.ClientMeta do
+defmodule Orangutan.Model.ClientMeta do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -17,7 +17,15 @@ defmodule Orangutan.ClientMeta do
   @doc false
   def changeset(client_meta, attrs) do
     client_meta
-    |> cast(attrs, [:key, :value])
-    |> validate_required([:key, :value])
+    |> cast(attrs, [
+      :key,
+      :value,
+      :client_id
+    ])
+    |> validate_required([
+      :key,
+      :value,
+      :client_id
+    ])
   end
 end

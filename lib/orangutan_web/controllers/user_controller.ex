@@ -4,7 +4,7 @@
 
 defmodule OrangutanWeb.UserController do
   use OrangutanWeb, :controller
-  alias Orangutan.UserContext
+  alias Orangutan.Context.UserContext
 
   @default_list_limit "10"
   @default_list_offset "0"
@@ -12,7 +12,7 @@ defmodule OrangutanWeb.UserController do
   # Get user endpoint
   def index(conn, %{"id" => id}) do
     case Integer.parse(id) do
-      {_int, ""} ->
+      {_, ""} ->
         user = UserContext.get_user_by_id(id)
 
         if user do
@@ -25,7 +25,7 @@ defmodule OrangutanWeb.UserController do
           |> render("error.json", %{error: "User with ID #{id} not found"})
         end
 
-      _ ->
+      :error ->
         conn
         |> put_status(:bad_request)
         |> render("error.json", %{error: "Invalid User ID"})

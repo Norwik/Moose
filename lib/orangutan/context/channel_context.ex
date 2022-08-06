@@ -2,6 +2,6 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-# Message Context Module
-defmodule Orangutan.MessageContext do
+# Channel Context Module
+defmodule Orangutan.Context.ChannelContext do
 end

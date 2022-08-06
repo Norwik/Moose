@@ -2,7 +2,7 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule Orangutan.MessageMeta do
+defmodule Orangutan.Model.MessageMeta do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -17,7 +17,15 @@ defmodule Orangutan.MessageMeta do
   @doc false
   def changeset(message_meta, attrs) do
     message_meta
-    |> cast(attrs, [:key, :value])
-    |> validate_required([:key, :value])
+    |> cast(attrs, [
+      :key,
+      :value,
+      :message_id
+    ])
+    |> validate_required([
+      :key,
+      :value,
+      :message_id
+    ])
   end
 end

@@ -2,7 +2,7 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule Orangutan.Client do
+defmodule Orangutan.Model.Client do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -23,7 +23,27 @@ defmodule Orangutan.Client do
   @doc false
   def changeset(client, attrs) do
     client
-    |> cast(attrs, [:uuid, :secret, :username, :gender, :country, :state, :age, :last_seen])
-    |> validate_required([:uuid, :secret, :username, :gender, :country, :state, :age, :last_seen])
+    |> cast(attrs, [
+      :uuid,
+      :secret,
+      :username,
+      :gender,
+      :country,
+      :state,
+      :age,
+      :last_seen,
+      :user_id
+    ])
+    |> validate_required([
+      :uuid,
+      :secret,
+      :username,
+      :gender,
+      :country,
+      :state,
+      :age,
+      :last_seen,
+      :user_id
+    ])
   end
 end

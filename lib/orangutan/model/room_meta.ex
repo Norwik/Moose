@@ -2,22 +2,30 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule Orangutan.UserMeta do
+defmodule Orangutan.Model.RoomMeta do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "users_meta" do
+  schema "rooms_meta" do
     field :key, :string
     field :value, :string
-    field :user_id, :id
+    field :room_id, :id
 
     timestamps()
   end
 
   @doc false
-  def changeset(user_meta, attrs) do
-    user_meta
-    |> cast(attrs, [:key, :value])
-    |> validate_required([:key, :value])
+  def changeset(room_meta, attrs) do
+    room_meta
+    |> cast(attrs, [
+      :key,
+      :value,
+      :room_id
+    ])
+    |> validate_required([
+      :key,
+      :value,
+      :room_id
+    ])
   end
 end

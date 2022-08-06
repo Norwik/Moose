@@ -2,7 +2,7 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule Orangutan.ChannelMeta do
+defmodule Orangutan.Model.ChannelMeta do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -17,7 +17,15 @@ defmodule Orangutan.ChannelMeta do
   @doc false
   def changeset(channel_meta, attrs) do
     channel_meta
-    |> cast(attrs, [:key, :value])
-    |> validate_required([:key, :value])
+    |> cast(attrs, [
+      :key,
+      :value,
+      :channel_id
+    ])
+    |> validate_required([
+      :key,
+      :value,
+      :channel_id
+    ])
   end
 end
