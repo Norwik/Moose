@@ -3,5 +3,5 @@
 # license that can be found in the LICENSE file.
 
 # Channel Service Module
-defmodule Orangutan.Context.UserService do
+defmodule Orangutan.Service.UserService do
 end

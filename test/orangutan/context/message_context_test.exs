@@ -2,6 +2,9 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-# Client Service Module
-defmodule Orangutan.Service.ClientService do
+defmodule Orangutan.Context.MessageContextTest do
+  @moduledoc """
+  Message Context Test Cases
+  """
+  use Orangutan.DataCase
 end
