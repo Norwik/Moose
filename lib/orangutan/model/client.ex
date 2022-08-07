@@ -42,8 +42,7 @@ defmodule Orangutan.Model.Client do
       :country,
       :state,
       :age,
-      :last_seen,
-      :user_id
+      :last_seen
     ])
   end
 end

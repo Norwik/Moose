@@ -153,8 +153,9 @@ defmodule Orangutan.Context.UserContext do
 
   # Create a new user meta attribute
   def create_user_meta(attrs \\ %{}) do
-    changeset = UserMeta.changeset(%UserMeta{}, attrs)
-    Repo.insert(changeset)
+    %UserMeta{}
+    |> UserMeta.changeset(attrs)
+    |> Repo.insert()
   end
 
   # Retrieve a user meta attribute by ID

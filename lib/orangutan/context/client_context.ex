@@ -151,8 +151,9 @@ defmodule Orangutan.Context.ClientContext do
 
   # Create a new client meta attribute
   def create_client_meta(attrs \\ %{}) do
-    changeset = ClientMeta.changeset(%ClientMeta{}, attrs)
-    Repo.insert(changeset)
+    %ClientMeta{}
+    |> ClientMeta.changeset(attrs)
+    |> Repo.insert()
   end
 
   # Retrieve a client meta attribute by ID
