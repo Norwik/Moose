@@ -4,4 +4,35 @@
 
 defmodule ChatWeb.ChannelController do
   use ChatWeb, :controller
+  alias Chat.UserContext
+
+  def list(conn, _params) do
+    conn
+    |> put_resp_content_type("application/json")
+    |> send_resp(200, "{\"status\": \"ok\"}")
+  end
+
+  def create(conn, _params) do
+    conn
+    |> put_resp_content_type("application/json")
+    |> send_resp(200, "{\"status\": \"ok\"}")
+  end
+
+  def index(conn, _params) do
+    conn
+    |> put_resp_content_type("application/json")
+    |> send_resp(200, "{\"status\": \"ok\"}")
+  end
+
+  def update(conn, _params) do
+    conn
+    |> put_resp_content_type("application/json")
+    |> send_resp(200, "{\"status\": \"ok\"}")
+  end
+
+  def delete(conn, _params) do
+    conn
+    |> put_resp_content_type("application/json")
+    |> send_resp(200, "{\"status\": \"ok\"}")
+  end
 end

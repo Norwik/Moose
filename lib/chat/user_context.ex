@@ -54,24 +54,20 @@ defmodule Chat.UserContext do
 
   # Get user by username
   def get_user_by_username(username) do
-    query =
-      from(
-        u in User,
-        where: u.username == ^username
-      )
-
-    query |> Repo.one()
+    from(
+      u in User,
+      where: u.username == ^username
+    )
+    |> Repo.one()
   end
 
   # Get user by email
   def get_user_by_email(email) do
-    query =
-      from(
-        u in User,
-        where: u.email == ^email
-      )
-
-    query |> Repo.one()
+    from(
+      u in User,
+      where: u.email == ^email
+    )
+    |> Repo.one()
   end
 
   # Update a user
@@ -92,7 +88,7 @@ defmodule Chat.UserContext do
   end
 
   # Retrieve users with limit
-  def list_users_by_limit(limit, offset) do
+  def list_users_by_limit(offset, limit) do
     from(u in User,
       limit: ^limit,
       offset: ^offset
@@ -129,24 +125,20 @@ defmodule Chat.UserContext do
 
   # Get user meta by user and key
   def get_user_meta_by_key(user_id, meta_key) do
-    query =
-      from(
-        u in UserMeta,
-        where: u.user_id == ^user_id,
-        where: u.key == ^meta_key
-      )
-
-    query |> Repo.one()
+    from(
+      u in UserMeta,
+      where: u.user_id == ^user_id,
+      where: u.key == ^meta_key
+    )
+    |> Repo.one()
   end
 
   # Get user metas
   def get_user_metas(user_id) do
-    query =
-      from(
-        u in UserMeta,
-        where: u.user_id == ^user_id
-      )
-
-    query |> Repo.all()
+    from(
+      u in UserMeta,
+      where: u.user_id == ^user_id
+    )
+    |> Repo.all()
   end
 end

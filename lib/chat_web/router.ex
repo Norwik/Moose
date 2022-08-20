@@ -38,6 +38,12 @@ defmodule ChatWeb.Router do
   scope "/api/v1", ChatWeb do
     pipe_through :api
 
+    get "/user", UserController, :list
+    post "/user", UserController, :create
+    get "/user/:id", UserController, :index
+    put "/user/:id", UserController, :update
+    delete "/user/:id", UserController, :delete
+
     get "/channel", ChannelController, :list
     post "/channel", ChannelController, :create
     get "/channel/:id", ChannelController, :index
