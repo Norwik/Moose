@@ -92,9 +92,10 @@ defmodule Chat.UserContext do
   end
 
   # Retrieve users with limit
-  def list_users_by_limit(limit) do
+  def list_users_by_limit(limit, offset) do
     from(u in User,
-      limit: ^limit
+      limit: ^limit,
+      offset: ^offset
     )
     |> Repo.all()
   end
