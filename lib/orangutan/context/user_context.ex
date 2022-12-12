@@ -9,6 +9,6 @@ defmodule Orangutan.Context.UserContext do
 
   require Argon2
   import Ecto.Query
-  # alias Orangutan.Repo
-  # alias Orangutan.Model.{UserMeta, User}
+  alias Orangutan.Repo
+  alias Orangutan.Model.{UserMeta, User}
 end

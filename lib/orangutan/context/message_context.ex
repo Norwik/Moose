@@ -8,6 +8,6 @@ defmodule Orangutan.Context.MessageContext do
   """
 
   import Ecto.Query
-  # alias Orangutan.Repo
-  # alias Orangutan.Model.{MessageMeta, Message}
+  alias Orangutan.Repo
+  alias Orangutan.Model.{MessageMeta, Message}
 end
