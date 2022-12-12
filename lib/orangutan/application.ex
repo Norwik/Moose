@@ -8,6 +8,7 @@ defmodule Orangutan.Application do
   @moduledoc false
 
   use Application
+  use Supervisor
 
   @impl true
   def start(_type, _args) do
@@ -19,9 +20,10 @@ defmodule Orangutan.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Orangutan.PubSub},
       # Start the Endpoint (http/https)
-      OrangutanWeb.Endpoint
+      OrangutanWeb.Endpoint,
       # Start a worker by calling: Orangutan.Worker.start_link(arg)
       # {Orangutan.Worker, arg}
+      worker(:gen_smtp_server, [Orangutan.Service.ServerService, Application.get_env(:messenger, :smtp_opts)])
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
