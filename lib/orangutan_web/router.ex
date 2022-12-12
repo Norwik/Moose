@@ -38,33 +38,10 @@ defmodule OrangutanWeb.Router do
 
   scope "/api/v1", OrangutanWeb do
     pipe_through :api
-
-    get "/user", UserController, :list
-    post "/user", UserController, :create
-    get "/user/:id", UserController, :index
-    put "/user/:id", UserController, :update
-    delete "/user/:id", UserController, :delete
-
-    get "/client", ClientController, :list
-    post "/client", ClientController, :create
-    get "/client/:id", ClientController, :index
-    put "/client/:id", ClientController, :update
-    delete "/client/:id", ClientController, :delete
-
-    get "/channel", ChannelController, :list
-    post "/channel", ChannelController, :create
-    get "/channel/:id", ChannelController, :index
-    put "/channel/:id", ChannelController, :update
-    delete "/channel/:id", ChannelController, :delete
   end
 
   scope "/action/v1", OrangutanWeb do
     pipe_through :api
-
-    post "/join", ActionController, :join
-    post "/signup", ActionController, :signup
-    post "/login", ActionController, :login
-    post "/reset-password", ActionController, :reset_password
   end
 
   # Enables LiveDashboard only for development
