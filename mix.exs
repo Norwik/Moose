@@ -44,7 +44,6 @@ defmodule Orangutan.MixProject do
       {:phoenix, "~> 1.6.13"},
       {:phoenix_ecto, "~> 4.4"},
       {:ecto_sql, "~> 3.6"},
-      {:ecto_sqlite3, ">= 0.0.0"},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 3.0"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
@@ -59,8 +58,7 @@ defmodule Orangutan.MixProject do
       {:jason, "~> 1.4"},
       {:plug_cowboy, "~> 2.5"},
       {:argon2_elixir, "~> 3.0"},
-      {:cors_plug, "~> 3.0"},
-      {:gen_smtp, "~> 1.2.0"}
+      {:cors_plug, "~> 3.0"}
     ]
   end
 

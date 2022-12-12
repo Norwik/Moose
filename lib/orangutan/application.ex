@@ -20,15 +20,15 @@ defmodule Orangutan.Application do
       # Start the PubSub system
       {Phoenix.PubSub, name: Orangutan.PubSub},
       # Start the Endpoint (http/https)
-      OrangutanWeb.Endpoint,
+      OrangutanWeb.Endpoint
       # Start a worker by calling: Orangutan.Worker.start_link(arg)
       # {Orangutan.Worker, arg}
-      worker(:gen_smtp_server, [Orangutan.Service.ServerService, Application.get_env(:messenger, :smtp_opts)])
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Orangutan.Supervisor]
+
     Supervisor.start_link(children, opts)
   end
 
