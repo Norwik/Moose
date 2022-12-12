@@ -7,18 +7,16 @@ defmodule Orangutan.Repo.Migrations.CreateMessages do
 
   def change do
     create table(:messages) do
-      add :content, :text
       add :uuid, :uuid
-      add :type, :string
-      add :client_id, references(:clients, on_delete: :delete_all)
-      add :room_id, references(:rooms, on_delete: :delete_all), null: true
-      add :channel_id, references(:channels, on_delete: :delete_all), null: true
+      add :from, :string
+      add :subject, :string
+      add :content, :text
+      add :email_id, references(:emails, on_delete: :delete_all), null: false
 
       timestamps()
     end
 
-    create index(:messages, [:client_id])
-    create index(:messages, [:room_id])
-    create index(:messages, [:channel_id])
+    create index(:messages, [:uuid])
+    create index(:messages, [:email_id])
   end
 end

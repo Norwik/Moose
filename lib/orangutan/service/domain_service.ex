@@ -2,8 +2,8 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule Orangutan.Service.ChannelService do
+defmodule Orangutan.Service.DomainService do
   @moduledoc """
-  Channel Service Module
+  Domain Service Module
   """
 end

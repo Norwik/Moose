@@ -2,9 +2,10 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule Orangutan.Context.ChannelContextTest do
+defmodule OrangutanWeb.DomainController do
   @moduledoc """
-  Channel Context Test Cases
+  Domain Controller
   """
-  use Orangutan.DataCase
+
+  use OrangutanWeb, :controller
 end

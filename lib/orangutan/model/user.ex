@@ -11,16 +11,13 @@ defmodule Orangutan.Model.User do
   import Ecto.Changeset
 
   schema "users" do
-    field :age, :integer
-    field :country, :string
-    field :email, :string
-    field :gender, :string
-    field :last_seen, :utc_datetime
+    field :uuid, Ecto.UUID
     field :name, :string
+    field :email, :string
     field :password_hash, :string
-    field :state, :string
-    field :username, :string
     field :verified, :boolean, default: false
+    field :role, :string
+    field :last_seen, :utc_datetime
 
     timestamps()
   end
@@ -29,33 +26,25 @@ defmodule Orangutan.Model.User do
   def changeset(user, attrs) do
     user
     |> cast(attrs, [
+      :uuid,
       :name,
-      :username,
       :email,
       :password_hash,
       :verified,
-      :gender,
-      :country,
-      :state,
-      :age,
+      :role,
       :last_seen
     ])
     |> validate_required([
+      :uuid,
       :name,
-      :username,
       :email,
       :password_hash,
       :verified,
-      :gender,
-      :country,
-      :state,
-      :age,
+      :role,
       :last_seen
     ])
-    |> validate_inclusion(:age, 18..100)
-    |> validate_length(:username, min: 3, max: 60)
     |> validate_length(:name, min: 3, max: 60)
     |> validate_length(:email, min: 3, max: 60)
-    |> validate_subset(:gender, ["male", "female"])
+    |> validate_subset(:role, ["regular", "admin"])
   end
 end

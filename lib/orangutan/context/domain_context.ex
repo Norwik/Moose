@@ -2,8 +2,12 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule Orangutan.Service.RoomService do
+defmodule Orangutan.Context.DomainContext do
   @moduledoc """
-  Room Service Module
+  Domain Context Module
   """
+
+  import Ecto.Query
+  alias Orangutan.Repo
+  alias Orangutan.Model.{DomainMeta, Domain}
 end

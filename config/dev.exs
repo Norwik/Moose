@@ -1,14 +1,39 @@
+# Copyright 2023 Clivern. All rights reserved.
+# Use of this source code is governed by the MIT
+# license that can be found in the LICENSE file.
+
 import Config
 
 # Configure your database
-config :orangutan, Orangutan.Repo,
-  username: "orangutan",
-  password: "orangutan",
-  hostname: "localhost",
-  database: "orangutan_dev",
-  stacktrace: true,
-  show_sensitive_data_on_connection_error: true,
-  pool_size: 10
+if System.get_env("DB_SSL") || "off" == "on" do
+  config :orangutan, Orangutan.Repo,
+    username: System.get_env("DB_USERNAME") || "orangutan",
+    password: System.get_env("DB_PASSWORD") || "orangutan",
+    hostname: System.get_env("DB_HOSTNAME") || "localhost",
+    database: System.get_env("DB_DATABASE") || "gorilla_dev",
+    port: String.to_integer(System.get_env("DB_PORT") || "5432"),
+    maintenance_database: System.get_env("DB_DATABASE") || "gorilla_dev",
+    stacktrace: true,
+    show_sensitive_data_on_connection_error: true,
+    pool_size: String.to_integer(System.get_env("DB_POOL_SIZE") || "10"),
+    ssl: true,
+    ssl_opts: [
+      verify: :verify_peer,
+      cacertfile: System.get_env("DB_CA_CERTFILE_PATH") || ""
+    ]
+else
+  config :orangutan, Orangutan.Repo,
+    username: System.get_env("DB_USERNAME") || "orangutan",
+    password: System.get_env("DB_PASSWORD") || "orangutan",
+    hostname: System.get_env("DB_HOSTNAME") || "localhost",
+    database: System.get_env("DB_DATABASE") || "orangutan_dev",
+    port: String.to_integer(System.get_env("DB_PORT") || "5432"),
+    maintenance_database: System.get_env("DB_DATABASE") || "gorilla_dev",
+    stacktrace: true,
+    show_sensitive_data_on_connection_error: true,
+    pool_size: String.to_integer(System.get_env("DB_POOL_SIZE") || "10")
+end
+
 
 # For development, we disable any cache and enable
 # debugging and code reloading.
@@ -19,11 +44,11 @@ config :orangutan, Orangutan.Repo,
 config :orangutan, OrangutanWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
-  http: [ip: {127, 0, 0, 1}, port: 4000],
+  http: [ip: {127, 0, 0, 1}, port: String.to_integer(System.get_env("APP_PORT") || "4000")],
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
-  secret_key_base: "76b3tsME0Sixg04dlGsxx48vhJz5EZndgXTUly32vxpsgifl5J/QDZRfe/zv0WSR",
+  secret_key_base: System.get_env("APP_SECRET") || "",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
     esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
@@ -59,8 +84,8 @@ config :orangutan, OrangutanWeb.Endpoint,
     patterns: [
       ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/orangutan_web/(live|views)/.*(ex)$",
-      ~r"lib/orangutan_web/templates/.*(eex)$"
+      ~r"lib/gorilla_web/(live|views)/.*(ex)$",
+      ~r"lib/gorilla_web/templates/.*(eex)$"
     ]
   ]
 

@@ -2,10 +2,12 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule OrangutanWeb.UserController do
+defmodule Orangutan.Context.EmailContext do
   @moduledoc """
-  Room Controller
+  Email Context Module
   """
 
-  use OrangutanWeb, :controller
+  import Ecto.Query
+  alias Orangutan.Repo
+  alias Orangutan.Model.{EmailMeta, Email}
 end

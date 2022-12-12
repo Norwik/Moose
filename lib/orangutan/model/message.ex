@@ -11,12 +11,11 @@ defmodule Orangutan.Model.Message do
   import Ecto.Changeset
 
   schema "messages" do
-    field :content, :string
-    field :type, :string
     field :uuid, Ecto.UUID
-    field :client_id, :id
-    field :room_id, :id
-    field :channel_id, :id
+    field :from, :string
+    field :subject, :string
+    field :content, :id
+    field :email_id, :id
 
     timestamps()
   end
@@ -25,18 +24,18 @@ defmodule Orangutan.Model.Message do
   def changeset(message, attrs) do
     message
     |> cast(attrs, [
-      :content,
       :uuid,
-      :type,
-      :client_id,
-      :room_id,
-      :channel_id
+      :from,
+      :subject,
+      :content,
+      :email_id
     ])
     |> validate_required([
-      :content,
       :uuid,
-      :type,
-      :client_id
+      :from,
+      :subject,
+      :content,
+      :email_id
     ])
   end
 end

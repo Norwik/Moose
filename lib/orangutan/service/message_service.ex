@@ -2,10 +2,8 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule OrangutanWeb.RoomController do
+defmodule Orangutan.Service.MessageService do
   @moduledoc """
-  Room Controller
+  Message Service Module
   """
-
-  use OrangutanWeb, :controller
 end

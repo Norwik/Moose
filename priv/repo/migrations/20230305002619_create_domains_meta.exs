@@ -2,19 +2,19 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule Orangutan.Repo.Migrations.CreateRoomsMeta do
+defmodule Orangutan.Repo.Migrations.CreateDomainsMeta do
   use Ecto.Migration
 
   def change do
-    create table(:rooms_meta) do
+    create table(:domains_meta) do
       add :key, :string
       add :value, :text
-      add :room_id, references(:rooms, on_delete: :delete_all)
+      add :domain_id, references(:domains, on_delete: :delete_all)
 
       timestamps()
     end
 
-    create index(:rooms_meta, [:key])
-    create index(:rooms_meta, [:room_id])
+    create index(:domains_meta, [:key])
+    create index(:domains_meta, [:domain_id])
   end
 end

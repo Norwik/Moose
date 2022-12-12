@@ -2,34 +2,34 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule Orangutan.Model.RoomMeta do
+defmodule Orangutan.Model.EmailMeta do
   @moduledoc """
-  RoomMeta Model
+  EmailMeta Model
   """
 
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "rooms_meta" do
+  schema "emails_meta" do
     field :key, :string
     field :value, :string
-    field :room_id, :id
+    field :email_id, :id
 
     timestamps()
   end
 
   @doc false
-  def changeset(room_meta, attrs) do
-    room_meta
+  def changeset(email_meta, attrs) do
+    email_meta
     |> cast(attrs, [
       :key,
       :value,
-      :room_id
+      :email_id
     ])
     |> validate_required([
       :key,
       :value,
-      :room_id
+      :email_id
     ])
   end
 end

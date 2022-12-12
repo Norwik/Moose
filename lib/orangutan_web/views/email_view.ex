@@ -2,10 +2,6 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule OrangutanWeb.UserController do
-  @moduledoc """
-  Room Controller
-  """
-
-  use OrangutanWeb, :controller
+defmodule OrangutanWeb.EmailView do
+  use OrangutanWeb, :view
 end

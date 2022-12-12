@@ -12,7 +12,7 @@ config :orangutan,
 
 # Configures the endpoint
 config :orangutan, OrangutanWeb.Endpoint,
-  url: [host: "localhost"],
+  url: [host: System.get_env("APP_HOST") || "localhost"],
   render_errors: [view: OrangutanWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: Orangutan.PubSub,
   live_view: [signing_salt: "/FQ30bq7"]

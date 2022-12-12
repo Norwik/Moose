@@ -2,19 +2,19 @@
 # Use of this source code is governed by the MIT
 # license that can be found in the LICENSE file.
 
-defmodule Orangutan.Repo.Migrations.CreateChannelsMeta do
+defmodule Orangutan.Repo.Migrations.CreateEmailsMeta do
   use Ecto.Migration
 
   def change do
-    create table(:channels_meta) do
+    create table(:emails_meta) do
       add :key, :string
       add :value, :text
-      add :channel_id, references(:channels, on_delete: :delete_all)
+      add :email_id, references(:emails, on_delete: :delete_all)
 
       timestamps()
     end
 
-    create index(:channels_meta, [:key])
-    create index(:channels_meta, [:channel_id])
+    create index(:emails_meta, [:key])
+    create index(:emails_meta, [:email_id])
   end
 end
