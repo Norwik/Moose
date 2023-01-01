@@ -14,6 +14,7 @@ defmodule OrangutanWeb.Endpoint do
     signing_salt: "Z+Rs6bdk"
   ]
 
+  socket "/socket", OrangutanWeb.UserSocket
   socket "/live", Phoenix.LiveView.Socket, websocket: [connect_info: [session: @session_options]]
 
   # Serve at "/" the static files from "priv/static" directory.

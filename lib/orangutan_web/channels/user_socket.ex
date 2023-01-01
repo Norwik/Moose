@@ -1,4 +1,9 @@
+# Copyright 2022 Clivern. All rights reserved.
+# Use of this source code is governed by the MIT
+# license that can be found in the LICENSE file.
+
 defmodule OrangutanWeb.UserSocket do
+
   use Phoenix.Socket
 
   # A Socket handler
@@ -18,7 +23,7 @@ defmodule OrangutanWeb.UserSocket do
   #
   # See the [`Channels guide`](https://hexdocs.pm/phoenix/channels.html)
   # for further details.
-
+  channel "room:*", OrangutanWeb.RoomChannel
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After
