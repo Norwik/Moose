@@ -15,7 +15,7 @@
     </p>
 </p>
 
-`Orangutan` is an online free chat rooms system with an unexpected focus on privacy. It is a platform where you can have a live discussion without registration! It supports also a private conversations. And once you signout, all your informations and messages gets wiped out. Even for registered users, the platform doesn't store conversations.
+Orangutan is an online free chat rooms system with an unexpected focus on privacy. It is a platform where you can have a live discussion without registration! It supports also a private conversations. And once you signout, all your informations and messages gets wiped out. Even for registered users, the platform doesn't store conversations.
 
 
 ### Getting Started
